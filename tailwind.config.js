@@ -6,6 +6,7 @@ export default {
       colors: {
         cyan: "#C0FDEF",
         peach: "#F5D8C8",
+        midBlue: "#518BCA",
       },
 
       screens: {
@@ -13,6 +14,12 @@ export default {
       },
 
       width: {
+        "2card": "45%",
+        "3card": "30%",
+        "4card": "23%",
+      },
+
+      flexBasis: {
         "2card": "45%",
         "3card": "30%",
         "4card": "23%",
