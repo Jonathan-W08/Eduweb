@@ -21,6 +21,10 @@ body {
   height: 100%;
 }
 
+.swiper-wrapper {
+  z-index: 0;
+}
+
 .swiper-slide {
   text-align: center;
   font-size: 18px;
