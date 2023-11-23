@@ -23,8 +23,8 @@ const Card = () => {
         <p className="text-xs mt-4">Jumat, 17 Nov 2023 | 14.00 - 16.00 WIB</p>
 
         <div className="flex items-center mt-4">
-          <img src="./public/vite.svg" alt="logo" />
-          <p className="text-xs font-bold">Infinite Learning Indonesia</p>
+          <img className=" w-9" src="./public/Logo_Infinite.png" alt="logo" />
+          <p className="text-xs ml-2 font-bold">Infinite Learning Indonesia</p>
         </div>
 
         <p className="font-bold mt-5">Gratis</p>

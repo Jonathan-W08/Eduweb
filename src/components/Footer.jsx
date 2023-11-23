@@ -7,8 +7,8 @@ const Footer = () => {
     <div className="">
       <div className="flex flex-col gap-5 justify-center bg-white p-4 mt-6 xs:flex-row xs:flex-wrap sm:mt-12">
         <div className="flex items-center xs:basis-2card sm:basis-3card">
-          <img src="./public/vite.svg" alt="logo" />
-          <h1 className=" font-semibold xl:text-lg">EDUWEB</h1>
+          <img className="w-9" src="./public/Logo_Eduweb.png" alt="logo" />
+          <h1 className="font-semibold ml-2 xl:text-lg">EDUWEB</h1>
         </div>
         <div className="flex flex-col xs:basis-2card sm:basis-3card">
           <p className="font-semibold xs:text-center xl:text-lg">
