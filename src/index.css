@@ -2,5 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    overflow-x: hidden;
+  }
+}
+
 @layer components {
+  swiper-slide {
+    @apply text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer transition-all hover:scale-105;
+  }
 }

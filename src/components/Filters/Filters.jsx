@@ -13,7 +13,7 @@ import { Navigation } from "swiper/modules";
 import SwipeButtons from "./SwipeButtons";
 
 const Filters = () => {
-  const [navigationShow, setNavigationShow] = useState(true);
+  const [navigationShow, setNavigationShow] = useState(false);
   const [slidesPerView, setSlidesPerView] = useState(1);
 
   // Check Window Width Size
@@ -42,13 +42,14 @@ const Filters = () => {
 
   return (
     <div
-      className="relative mt-6 p-3 xl:px-12"
-      // onMouseEnter={() => {
-      //   setNavigationShow(true);
-      // }}
-      // onMouseLeave={() => {
-      //   setNavigationShow(false);
-      // }}
+
+      className="relative mt-6 p-3 sm:p-6 xl:px-12"
+      onMouseEnter={() => {
+        setNavigationShow(true);
+      }}
+      onMouseLeave={() => {
+        setNavigationShow(false);
+      }}
     >
       <Swiper
         modules={[Navigation]}
@@ -56,23 +57,27 @@ const Filters = () => {
         spaceBetween={25}
         className="mySwiper cursor-grab select-none"
       >
-        <SwipeButtons className={"absolute block z-100 left-0 bg-red-700"} />
-        <SwiperSlide className="text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer">
+
+        <SwipeButtons
+          className={" h-full leading-none opacity-50"}
+          navigationShow={navigationShow}
+        />
+        <SwiperSlide className="opacity-50 text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer transition-all hover:opacity-100">
           Semua
         </SwiperSlide>
-        <SwiperSlide className="text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer">
+        <SwiperSlide className="opacity-50 text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer transition-all hover:opacity-100">
           IT Development
         </SwiperSlide>
-        <SwiperSlide className="text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer">
+        <SwiperSlide className="opacity-50 text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer transition-all hover:opacity-100">
           Marketing
         </SwiperSlide>
-        <SwiperSlide className="text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer">
+        <SwiperSlide className="opacity-50 text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer transition-all hover:opacity-100">
           Bisnis
         </SwiperSlide>
-        <SwiperSlide className="text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer">
+        <SwiperSlide className="opacity-50 text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer transition-all hover:opacity-100">
           Bahasa Inggris
         </SwiperSlide>
-        <SwiperSlide className="text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer">
+        <SwiperSlide className="opacity-50 text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer transition-all hover:opacity-100">
           Self Development
         </SwiperSlide>
       </Swiper>
