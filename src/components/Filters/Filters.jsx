@@ -42,7 +42,7 @@ const Filters = () => {
 
   return (
     <div
-      className="mt-6 p-3 xl:px-12"
+      className="relative mt-6 p-3 xl:px-12"
       // onMouseEnter={() => {
       //   setNavigationShow(true);
       // }}
@@ -56,61 +56,7 @@ const Filters = () => {
         spaceBetween={25}
         className="mySwiper cursor-grab select-none"
       >
-        <SwipeButtons />
-        <SwiperSlide className="text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer">
-          Semua
-        </SwiperSlide>
-        <SwiperSlide className="text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer">
-          IT Development
-        </SwiperSlide>
-        <SwiperSlide className="text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer">
-          Marketing
-        </SwiperSlide>
-        <SwiperSlide className="text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer">
-          Bisnis
-        </SwiperSlide>
-        <SwiperSlide className="text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer">
-          Bahasa Inggris
-        </SwiperSlide>
-        <SwiperSlide className="text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer">
-          Self Development
-        </SwiperSlide>
-        <SwiperSlide className="text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer">
-          Semua
-        </SwiperSlide>
-        <SwiperSlide className="text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer">
-          IT Development
-        </SwiperSlide>
-        <SwiperSlide className="text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer">
-          Marketing
-        </SwiperSlide>
-        <SwiperSlide className="text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer">
-          Bisnis
-        </SwiperSlide>
-        <SwiperSlide className="text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer">
-          Bahasa Inggris
-        </SwiperSlide>
-        <SwiperSlide className="text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer">
-          Self Development
-        </SwiperSlide>
-        <SwiperSlide className="text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer">
-          Semua
-        </SwiperSlide>
-        <SwiperSlide className="text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer">
-          IT Development
-        </SwiperSlide>
-        <SwiperSlide className="text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer">
-          Marketing
-        </SwiperSlide>
-        <SwiperSlide className="text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer">
-          Bisnis
-        </SwiperSlide>
-        <SwiperSlide className="text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer">
-          Bahasa Inggris
-        </SwiperSlide>
-        <SwiperSlide className="text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer">
-          Self Development
-        </SwiperSlide>
+        <SwipeButtons className={"absolute block z-100 left-0 bg-red-700"} />
         <SwiperSlide className="text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer">
           Semua
         </SwiperSlide>
