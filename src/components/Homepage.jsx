@@ -3,7 +3,7 @@ import Cards from "./Cards";
 import Filters from "./Filters/Filters.jsx";
 import Header from "./Header";
 
-const Hompage = () => {
+const Homepage = () => {
   return (
     <div>
       <Header />
@@ -13,4 +13,4 @@ const Hompage = () => {
   );
 };
 
-export default Hompage;
+export default Homepage;
