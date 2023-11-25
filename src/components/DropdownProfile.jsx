@@ -19,8 +19,8 @@ const DropdownProfile = () => {
         </div>
       </div>
       <div>
-        <p className="p-3 cursor-pointer">Akun</p>
-        <p className="p-3 cursor-pointer">Logout</p>
+        <p className="p-3 cursor-pointer hover:bg-neutral-200">Akun</p>
+        <p className="p-3 cursor-pointer hover:bg-neutral-200">Logout</p>
       </div>
     </div>
   );

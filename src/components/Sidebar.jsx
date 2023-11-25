@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 import { List, HouseDoorFill, Laptop } from "react-bootstrap-icons";
 
 const Sidebar = (props) => {
@@ -20,18 +22,22 @@ const Sidebar = (props) => {
       </div>
 
       <div className="flex-1">
-        <div className="flex items-center p-3 cursor-pointer transition-all hover:bg-neutral-200">
-          <div className="text-2xl">
-            <HouseDoorFill />
+        <Link to={"/penyelenggara/dashboard"}>
+          <div className="flex items-center p-3 cursor-pointer transition-all hover:bg-neutral-200">
+            <div className="text-2xl">
+              <HouseDoorFill />
+            </div>
+            <p className="ml-5">Dashboard</p>
           </div>
-          <p className="ml-5">Dashboard</p>
-        </div>
-        <div className="flex items-center p-3 cursor-pointer transition-all hover:bg-neutral-200">
-          <div className="text-2xl">
-            <Laptop />
+        </Link>
+        <Link to={"/penyelenggara/register-webinar"}>
+          <div className="flex items-center p-3 cursor-pointer transition-all hover:bg-neutral-200">
+            <div className="text-2xl">
+              <Laptop />
+            </div>
+            <p className="ml-5">Register Webinar</p>
           </div>
-          <p className="ml-5">Register Webinar</p>
-        </div>
+        </Link>
       </div>
     </div>
   );

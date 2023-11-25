@@ -3,7 +3,7 @@ import { Display } from "react-bootstrap-icons";
 
 const CardDashboard = (props) => {
   return (
-    <div className=" border-[1px] border-neutral-200 p-5 rounded-md shadow-sm">
+    <div className=" border-[1px] border-neutral-200 p-5 rounded-md shadow-md">
       <div className="flex items-center border-b-[1px] border-black pb-5">
         <div className=" text-xl">
           <Display />
