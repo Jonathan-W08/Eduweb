@@ -13,6 +13,8 @@ export default {
         peach: "#F5D8C8",
         midBlue: "#518BCA",
         whiteBlue: "#FBFDFF",
+        lightBlue: "#CFE2F0",
+        strongBlue: "#1814C0",
       },
 
       screens: {
@@ -33,6 +35,10 @@ export default {
 
       fontSize: {
         "1/6": "16.666667%",
+      },
+
+      fontFamily: {
+        sans: ["poppins"],
       },
     },
   },
