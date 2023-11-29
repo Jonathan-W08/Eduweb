@@ -12,7 +12,7 @@ const NavbarTwo = (props) => {
   };
 
   return (
-    <nav className="relative flex justify-between items-center bg-white p-3 shadow-md">
+    <nav className="relative flex justify-between items-center bg-white p-3 shadow-md xl:px-9">
       <NavLink to={"/penyelenggara"} className="hidden md:block">
         <div className="flex items-center xs:basis-2card sm:basis-3card">
           <img className="w-9" src="/public/Logo_Eduweb.png" alt="logo" />
@@ -39,7 +39,16 @@ const NavbarTwo = (props) => {
           <ChevronDown />
         </div>
       </div>
-      {dropdownProfileOpen && <DropdownProfile />}
+      {dropdownProfileOpen && (
+        <DropdownProfile
+          name="Penyelenggara"
+          email="penyelenggara@gmail.com"
+          linkList={[
+            { name: "Profil", route: "/" },
+            { name: "Log Out", route: "/" },
+          ]}
+        />
+      )}
     </nav>
   );
 };

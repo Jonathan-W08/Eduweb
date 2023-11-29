@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 import NavbarTwo from "./components/NavbarTwo";
 import PenyelenggaraLayout from "./components/PeyelenggaraLayout";
+import Profile from "./components/Profile";
 import RegisterWebinar from "./components/RegisterWebinar";
 import UserLayout from "./components/UserLayout";
 
@@ -18,6 +19,7 @@ export default function App() {
 
           <Route path="/" element={<UserLayout />}>
             <Route index element={<Homepage />} />
+            <Route path="profile" element={<Profile />} />
           </Route>
 
           <Route path="/penyelenggara" element={<PenyelenggaraLayout />}>
