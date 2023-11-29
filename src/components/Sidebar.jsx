@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { List, HouseDoorFill, Laptop } from "react-bootstrap-icons";
 
@@ -22,22 +22,22 @@ const Sidebar = (props) => {
       </div>
 
       <div className="flex-1">
-        <Link to={"/penyelenggara/dashboard"}>
+        <NavLink to={"/penyelenggara"}>
           <div className="flex items-center p-3 cursor-pointer transition-all hover:bg-neutral-200">
             <div className="text-2xl">
               <HouseDoorFill />
             </div>
             <p className="ml-5">Dashboard</p>
           </div>
-        </Link>
-        <Link to={"/penyelenggara/register-webinar"}>
+        </NavLink>
+        <NavLink to={"/penyelenggara/register-webinar"}>
           <div className="flex items-center p-3 cursor-pointer transition-all hover:bg-neutral-200">
             <div className="text-2xl">
               <Laptop />
             </div>
             <p className="ml-5">Register Webinar</p>
           </div>
-        </Link>
+        </NavLink>
       </div>
     </div>
   );

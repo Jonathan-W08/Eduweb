@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { ChevronDown, List } from "react-bootstrap-icons";
 import DropdownProfile from "./DropdownProfile";
@@ -13,12 +13,12 @@ const NavbarTwo = (props) => {
 
   return (
     <nav className="relative flex justify-between items-center bg-white p-3 shadow-md">
-      <Link to={"/penyelenggara/dashboard"} className="hidden md:block">
+      <NavLink to={"/penyelenggara"} className="hidden md:block">
         <div className="flex items-center xs:basis-2card sm:basis-3card">
           <img className="w-9" src="/public/Logo_Eduweb.png" alt="logo" />
           <h1 className="font-semibold ml-2 xl:text-lg">EDUWEB</h1>
         </div>
-      </Link>
+      </NavLink>
 
       <div
         className="p-2 cursor-pointer md:hidden"
