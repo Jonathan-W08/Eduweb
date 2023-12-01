@@ -21,7 +21,7 @@ const Navbar = () => {
 
   return (
     <nav className="relative flex justify-between items-center bg-white p-3 shadow-md md:justify-start xl:px-9">
-      <Link to={"/penyelenggara/dashboard"} className="hidden md:block">
+      <Link to={"/"} className="hidden md:block">
         <div className="flex items-center xs:basis-2card sm:basis-3card">
           <img className="w-9" src="/public/Logo_Eduweb.png" alt="logo" />
           <h1 className="font-semibold ml-2 xl:text-lg">EDUWEB</h1>
@@ -70,7 +70,7 @@ const Navbar = () => {
           name="Angel Naibaho"
           email="angelnaibaho@gmail.com"
           linkList={[
-            { name: "Profil", route: "/" },
+            { name: "Profil", route: "/profile" },
             { name: "Partisipasi", route: "/" },
             { name: "Keamanan", route: "/" },
             { name: "Syarat dan Kondisi", route: "/" },

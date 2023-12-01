@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import InputRegister from "./InputRegister";
 import InputLogin from "./InputLogin";
 
@@ -8,6 +8,12 @@ import { Google, Facebook } from "react-bootstrap-icons";
 import { Button, Checkbox } from "flowbite-react";
 
 const Login = () => {
+  const [userLogin, setUserLogin] = useState(true);
+
+  const changeUserLogin = (e) => {
+    setUserLogin((prev) => !prev);
+  };
+
   return (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-2/3 p-3 xs:max-w-md md:max-w-3xl">
       <div className="flex gap-3 items-center w-full h-full bg-lightBlue rounded-md shadow-lg overflow-hidden">
@@ -42,7 +48,11 @@ const Login = () => {
               type={"password"}
             />
             <div className="flex items-center mt-3 text-xs">
-              <Checkbox id="penyelenggara" />
+              <Checkbox
+                id="penyelenggara"
+                value={userLogin}
+                onChange={changeUserLogin}
+              />
               <label htmlFor="penyelenggara" className="ml-2">
                 Login sebagai penyelenggara
               </label>
@@ -51,7 +61,12 @@ const Login = () => {
 
           <div className="flex justify-between items-center mt-6">
             <Link className="text-xs">Lupa Password?</Link>
-            <Button color="blue" className="p-0">
+            <Button
+              color="blue"
+              className="p-0"
+              as={Link}
+              to={userLogin ? "/" : "/penyelenggara"}
+            >
               Submit
             </Button>
           </div>
