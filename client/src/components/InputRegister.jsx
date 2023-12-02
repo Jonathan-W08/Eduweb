@@ -13,7 +13,7 @@ const InputRegister = (props) => {
         </div>
       )}
       <label
-        htmlFor={props.title}
+        htmlFor={props.name}
         className={`block text-lg font-bold leading-6 text-gray-900 ${
           props.type === "image" ? "mt-6" : false
         }`}
@@ -28,12 +28,14 @@ const InputRegister = (props) => {
         )}
         <input
           type={props.type}
-          name={props.title}
-          id={props.title}
+          name={props.name}
+          id={props.name}
           className={`block w-full rounded-md border-0 py-1.5 ${
             props.preLabel ? "px-9" : "px-3"
           } text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-mid-blue sm:text-sm sm:leading-6`}
           placeholder={props.placeholder}
+          value={props.value}
+          onChange={(e) => props.changeWebinarData(e, props.name)}
         />
         {/* <div className="absolute inset-y-0 right-0 flex items-center">
           <label htmlFor="currency" className="sr-only">

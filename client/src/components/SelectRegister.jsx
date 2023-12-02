@@ -11,7 +11,11 @@ const SelectRegister = (props) => {
           className="block text-lg font-bold leading-6 text-gray-900"
         />
       </div>
-      <Select id={props.title} required>
+      <Select
+        id={props.title}
+        onChange={(e) => props.changeWebinarData(e, props.name)}
+        required
+      >
         {props.options.map((option, i) => (
           <option key={i}>{option}</option>
         ))}
