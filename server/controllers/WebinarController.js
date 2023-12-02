@@ -26,14 +26,16 @@ export const createWebinar = async (req, res) => {
   try {
     const response = await Webinar.create(req.body);
     res.status(201).json({ msg: "Webinar created" });
+    console.log("BERHASIL");
   } catch (err) {
-    console.log(err.message);
+    console.log("ERROR");
+    console.log(err);
   }
 };
 
 export const updateWebinar = async (req, res) => {
   try {
-    const response = await Webinar.update(req.body, {
+    await Webinar.update(req.body, {
       where: {
         id: req.params.id,
       },
@@ -46,7 +48,7 @@ export const updateWebinar = async (req, res) => {
 
 export const deleteWebinar = async (req, res) => {
   try {
-    const response = await Webinar.destroy({
+    await Webinar.destroy({
       where: {
         id: req.params.id,
       },

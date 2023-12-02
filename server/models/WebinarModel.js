@@ -6,7 +6,7 @@ const { DataTypes } = Sequelize;
 const Webinar = db.define(
   "webinars",
   {
-    id: { type: DataTypes.INTEGER, primaryKey: true },
+    id: { type: DataTypes.STRING, primaryKey: true },
     title: DataTypes.STRING,
     categories: DataTypes.STRING,
     date: DataTypes.STRING,

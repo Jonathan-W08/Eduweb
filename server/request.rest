@@ -9,8 +9,8 @@ GET http://localhost:5000/1234
 POST http://localhost:5000/webinars
 Content-Type: application/json
 {
-    "id": 12345678,
-    "title": "Fundamental UI/UX design: Wifeframing dan Prototyping",
+    "id": 89348658,
+    "title": "ssssFundamental UI/UX design: Wifeframing dan Prototyping",
     "categories": "Sertifikat, IT Development",
     "date": "Jumat, 17 Nov 2023",
     "time": "14.00 - 16.00 WIB",
@@ -22,11 +22,11 @@ Content-Type: application/json
 
 
 ###
-PATCH  http://localhost:5000/webinars/123
+PATCH  http://localhost:5000/webinars/2147483647
 Content-Type: application/json
 
 {
-    "title": "bla bla bla bla",
+    "title": "kren banget",
     "categories": "coding, economy, circus",
     "date": "2/2/2022",
     "time": "20:00",
