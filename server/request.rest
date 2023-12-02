@@ -1,0 +1,42 @@
+GET http://localhost:5000/
+
+###
+
+GET http://localhost:5000/1234
+
+
+###
+POST http://localhost:5000/webinars
+Content-Type: application/json
+{
+    "id": 12345678,
+    "title": "Fundamental UI/UX design: Wifeframing dan Prototyping",
+    "categories": "Sertifikat, IT Development",
+    "date": "Jumat, 17 Nov 2023",
+    "time": "14.00 - 16.00 WIB",
+    "penyelenggara": "Infinite Learning Indonesia",
+    "cost": "0",
+    "profile_img": "/penyelenggara_images/12345678.png",
+    "webinar_img": "/webinar_images/12345678.jpg"
+}
+
+
+###
+PATCH  http://localhost:5000/webinars/123
+Content-Type: application/json
+
+{
+    "title": "bla bla bla bla",
+    "categories": "coding, economy, circus",
+    "date": "2/2/2022",
+    "time": "20:00",
+    "penyelenggara": "Budi",
+    "cost": "0",
+    "profile_img": "",
+    "webinar_img": ""
+}
+
+
+###
+
+DELETE http://localhost:5000/webinars/123
