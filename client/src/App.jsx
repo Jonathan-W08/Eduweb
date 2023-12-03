@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 import NavbarTwo from "./components/NavbarTwo";
 import NotFound from "./components/NotFound";
+import PeyelenggaraSidebarLayout from "./components/PeyelenggaraSidebarLayout";
 import PenyelenggaraLayout from "./components/PeyelenggaraLayout";
 import Profile from "./components/Profile";
 import RegisterWebinar from "./components/RegisterWebinar";
@@ -24,8 +25,11 @@ export default function App() {
           </Route>
 
           <Route path="/penyelenggara" element={<PenyelenggaraLayout />}>
-            <Route index element={<Dashboard />} />
-            <Route path="register-webinar" element={<RegisterWebinar />} />
+            <Route index element={<Homepage />} />
+            <Route path="dashboard" element={<PeyelenggaraSidebarLayout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="register-webinar" element={<RegisterWebinar />} />
+            </Route>
           </Route>
 
           <Route path="*" element={<NotFound />} />

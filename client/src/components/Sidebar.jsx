@@ -22,7 +22,7 @@ const Sidebar = (props) => {
       </div>
 
       <div className="flex-1">
-        <NavLink to={"/penyelenggara"}>
+        <NavLink to={"/penyelenggara/dashboard"}>
           <div className="flex items-center p-3 cursor-pointer transition-all hover:bg-neutral-200">
             <div className="text-2xl">
               <HouseDoorFill />
@@ -30,7 +30,7 @@ const Sidebar = (props) => {
             <p className="ml-5">Dashboard</p>
           </div>
         </NavLink>
-        <NavLink to={"/penyelenggara/register-webinar"}>
+        <NavLink to={"/penyelenggara/dashboard/register-webinar"}>
           <div className="flex items-center p-3 cursor-pointer transition-all hover:bg-neutral-200">
             <div className="text-2xl">
               <Laptop />

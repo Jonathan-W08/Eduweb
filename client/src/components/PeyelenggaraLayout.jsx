@@ -17,10 +17,7 @@ const PenyelenggaraLayout = () => {
     <div>
       <NavbarTwo controlSidebarOpen={controlSidebarOpen} />
 
-      <div className="flex">
-        <Sidebar sidebarOpen={sidebarOpen} />
-        <Outlet />
-      </div>
+      <Outlet />
 
       <Footer />
     </div>

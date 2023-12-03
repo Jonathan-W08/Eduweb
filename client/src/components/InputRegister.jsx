@@ -2,19 +2,19 @@ import React from "react";
 
 const InputRegister = (props) => {
   return (
-    <div className="mt-6">
-      {props.type === "image" && (
+    <div>
+      {props.type === "file" && (
         <div className="mt-3 w-full aspect-video rounded-md sm:w-1/2 xl:w-1/3 bg-slate-300">
-          {/* <img
-              src="./public/img/webinar.jpg"
-              alt="poster"
-              className="w-full opacity-0"
-            /> */}
+          {props.preview ? (
+            <img src={props.preview} alt="poster" className="w-full" />
+          ) : (
+            ""
+          )}
         </div>
       )}
       <label
         htmlFor={props.name}
-        className={`block text-lg font-bold leading-6 text-gray-900 ${
+        className={`block text-lg mt-6 font-bold leading-6 text-gray-900 ${
           props.type === "image" ? "mt-6" : false
         }`}
       >
@@ -35,7 +35,11 @@ const InputRegister = (props) => {
           } text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-mid-blue sm:text-sm sm:leading-6`}
           placeholder={props.placeholder}
           value={props.value}
-          onChange={(e) => props.changeWebinarData(e, props.name)}
+          onChange={(e) =>
+            props.type === "file"
+              ? props.changeLoadImage(e)
+              : props.changeWebinarData(e, props.name)
+          }
         />
         {/* <div className="absolute inset-y-0 right-0 flex items-center">
           <label htmlFor="currency" className="sr-only">

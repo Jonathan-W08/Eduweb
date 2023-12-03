@@ -4,15 +4,25 @@ import SelectRegister from "./SelectRegister";
 
 import axios from "axios";
 import generateUniqueId from "generate-unique-id";
+import { useNavigate } from "react-router-dom";
 
 const RegisterWebinar = () => {
-  // Generate unique ID
-  const generatedID = generateUniqueId();
+  const navigation = useNavigate();
+
+  // Image Process
+  const [file, setFile] = useState("");
+  const [preview, setPreview] = useState("");
+
+  const loadImage = (e) => {
+    const image = e.target.files[0];
+    setFile(image);
+    setPreview(URL.createObjectURL(image));
+  };
 
   // Webinar Data
   const [webinarData, setWebinarData] = useState({
     title: "",
-    categories: "",
+    categories: "IT Development",
     date: "",
     time: "",
     penyelenggara: "",
@@ -30,10 +40,21 @@ const RegisterWebinar = () => {
 
   // Add Webinar to database
   const addWebinar = async () => {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    console.log(file);
+    console.log(webinarData);
+
+    for (const property in webinarData) {
+      formData.append(property, webinarData[property]);
+    }
+
     try {
-      await axios.post("http://localhost:5000/webinars", {
-        ...webinarData,
-        id: generatedID,
+      await axios.post("http://localhost:5000/webinars", formData, {
+        headers: {
+          "Content-type": "multipart/form-data",
+        },
       });
     } catch (err) {
       console.log(err.message);
@@ -44,6 +65,7 @@ const RegisterWebinar = () => {
   const submitWebinar = (e) => {
     e.preventDefault();
     addWebinar();
+    navigation("/penyelenggara");
   };
 
   return (
@@ -105,15 +127,17 @@ const RegisterWebinar = () => {
             />
           </div>
 
-          {/* <div>
+          <div>
             <InputRegister
               title={"Poster"}
               placeholder={"Image"}
               required={true}
               preLabel={false}
-              type={"image"}
+              type={"file"}
+              changeLoadImage={loadImage}
+              preview={preview}
             />
-          </div> */}
+          </div>
 
           <SelectRegister
             title={"Category"}

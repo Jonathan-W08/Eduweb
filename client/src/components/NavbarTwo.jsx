@@ -44,8 +44,12 @@ const NavbarTwo = (props) => {
           name="Penyelenggara"
           email="penyelenggara@gmail.com"
           linkList={[
-            { name: "Profil", route: "/" },
-            { name: "Log Out", route: "/" },
+            { name: "Dashboard", route: "/penyelenggara/dashboard" },
+            {
+              name: "Register",
+              route: "/penyelenggara/dashboard/register-webinar",
+            },
+            { name: "Log Out", route: "/login" },
           ]}
         />
       )}
