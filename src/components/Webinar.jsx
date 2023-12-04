@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Webinar = () => {
   return (
-    <div className="flex flex-row">
+    <div className="grid grid-cols-2 gap-4">
       
         <div className="max-w-sm" style={{maxWidth:"900px", margin:"20px"}}>
         <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white" style={{borderBottom:"5px solid #000"}}>
@@ -37,11 +37,12 @@ const Webinar = () => {
       </div>
             
     </div>
+    </div>
    
 
     
 
-    
+    <div>
     <Card href="#" className="">
       <h1 style={{fontSize:"20px", borderBottom:"2px solid #000"}}>02:13  | Segera selesaikan pendaftaranmu</h1>
       <h1 className="font-bold mt-1" style={{fontSize:"30px"}}> Detail Harga</h1>
@@ -53,8 +54,8 @@ const Webinar = () => {
       
       <Button className='bg-midBlue'> <Link to={"/webinar"}>Daftar Webinar</Link></Button>
     </Card>
-    </div>
     
+    </div>
 
             
     </div>

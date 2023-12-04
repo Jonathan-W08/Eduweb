@@ -11,29 +11,23 @@ import { Link } from "react-router-dom";
 
 const Partsipasi = () => {
   return (
-    <div className="grid grid-cols-2 gap-4 justify-end " style={{maxWidth:"1500px", margin:"20px"}}>
+    <div className="grid grid-cols-2 gap-4">
 
       <div>
       <img src="./public/img/webinar.jpg" alt="" style={{width:"1000px",height:"600px"}}/>
-
-     
-        <div>
-      <Card href="#" className="max-w-sm" style={{maxWidth:"1000px", margin:"20px auto"}}>
-      <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <div style={{width:"835px", height:"200px", backgroundColor:"white"}}>
+      <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white" >
     Deskripsi
       </h5>
       <p className="font-normal text-gray-700 dark:text-gray-400" style={{textAlign:"justify"}}>
       Menguasai UI/UX adalah investasi berharga di era digital. Dengan keahlian ini, Anda bisa menciptakan pengalaman menarik, meningkatkan interaksi produk, dan memikat audiens. Era digital menekankan inovasi dan rasa percaya diri dalam merancang UI/UX yang luar biasa. Gabung di webinar kami, dan tingkatkan produk digital Anda!
 <br />#GrowTogetherWithIL
       </p>
-    </Card>
+    </div>
     </div>
 
-    </div>
-      
-
-      <div className="flex justify-end">
-      <Card href="#" className="max-w-sm ">
+      <div className="">
+      <div  style={{width:"405px", height:"200px", backgroundColor:"white"}}>
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
       Fundamental UI/UX design: Wireframing dan Prototyping
       </h5>
@@ -48,13 +42,13 @@ const Partsipasi = () => {
           <img className=" w-9" src="./public/Logo_Infinite.png" alt="logo" />
           <p className="text-xs ml-2 font-bold">Infinite Learning Indonesia</p>
         </div>
-        
-    </Card>
+        </div>
+    
     
 
     
 
-    <Card href="#" className="">
+   <div style={{width:"405px", height:"200px", backgroundColor:"white"}}>
     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center mt-4" style={{borderBottom:"5px solid #000"}}>
     <IoTicketSharp style={{width:"100px", height:"100px"}} />
       Fundamental UI/UX design: Wireframing dan Prototyping
@@ -64,7 +58,7 @@ const Partsipasi = () => {
       </div>
       <Button className='bg-midBlue'> <Link to={"/webinar"}>Lanjut Ke Detail Pendaftaran</Link></Button>
       
-    </Card>
+      </div>
 
     </div>
     
