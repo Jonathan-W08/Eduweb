@@ -41,7 +41,7 @@ const Navbar = () => {
             <li className="grow">
 
              
-              <NavLink className="block w-full p-3" to={"/"}>
+              <NavLink className="block w-full p-3" to={"homepage/"}>
                 Beranda
               </NavLink>
 

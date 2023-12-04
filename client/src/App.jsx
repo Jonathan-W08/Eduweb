@@ -42,6 +42,7 @@ export default function App() {
           <Route path="/" element={<UserLayout account={account} />}>
             <Route index element={<Homepage />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="homepage" element={<Homepage />} />
             <Route path="tentangkami" element={<TentangKami />} />
             <Route path="partsipasi" element={<Partsipasi />} />
             <Route path="webinar" element={<Webinar />} />

@@ -116,7 +116,7 @@ const Webinar = () => {
             </Label>
           </div>
 
-          <Button className="bg-midBlue" as={Link} to={"/webinar"}>
+          <Button className="bg-midBlue" as={Link} to={"/homepage"}>
             Daftar Webinar
           </Button>
         </div>
