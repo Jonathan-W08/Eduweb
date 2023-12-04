@@ -45,7 +45,7 @@ const Navbar = () => {
               <NavLink className="block w-full p-3">Partisipasi</NavLink>
             </li>
             <li className="grow">
-              <NavLink className="block w-full p-3">Tentang Kami</NavLink>
+              <NavLink className="block w-full p-3"  to={"/tentangkami"}>Tentang Kami</NavLink>
             </li>
           </ul>
         </div>

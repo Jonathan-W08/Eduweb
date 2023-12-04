@@ -10,6 +10,9 @@ import PenyelenggaraLayout from "./components/PeyelenggaraLayout";
 import Profile from "./components/Profile";
 import RegisterWebinar from "./components/RegisterWebinar";
 import UserLayout from "./components/UserLayout";
+import Partsipasi from "./components/Partsipasi";
+import Webinar from "./components/Webinar";
+import Tentangkami from "./Tentangkami";
 
 export default function App() {
   return (
@@ -21,6 +24,10 @@ export default function App() {
           <Route path="/" element={<UserLayout />}>
             <Route index element={<Homepage />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="tentangkami" element={<Tentangkami />} />
+            <Route path="partsipasi" element={<Partsipasi />} />
+            <Route path="partsipasi" element={<Partsipasi />} />
+            <Route path="webinar" element={<Webinar />} />
           </Route>
 
           <Route path="/penyelenggara" element={<PenyelenggaraLayout />}>

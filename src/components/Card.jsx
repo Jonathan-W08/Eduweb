@@ -1,4 +1,6 @@
 import React from "react";
+import Partsipasi from "./Partsipasi";
+import { Link } from "react-router-dom";
 
 const Card = () => {
   return (
@@ -27,7 +29,8 @@ const Card = () => {
           <p className="text-xs ml-2 font-bold">Infinite Learning Indonesia</p>
         </div>
 
-        <p className="font-bold mt-5">Gratis</p>
+        <p className="font-bold mt-5" ><Link to={"/partsipasi"}>Gratis</Link></p>
+        
       </div>
     </div>
   );
