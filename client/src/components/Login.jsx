@@ -1,18 +1,58 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InputRegister from "./InputRegister";
 import InputLogin from "./InputLogin";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
+import axios from "axios";
 
 import { Google, Facebook } from "react-bootstrap-icons";
 import { Button, Checkbox } from "flowbite-react";
 
-const Login = () => {
+const Login = (props) => {
+  const navigate = useNavigate();
+
+  // Status Login
   const [userLogin, setUserLogin] = useState(true);
 
   const changeUserLogin = (e) => {
     setUserLogin((prev) => !prev);
   };
+
+  // Handle Google Login
+  const handleCallbackResponse = (response, userLogin) => {
+    try {
+      let obj = jwtDecode(response.credential);
+      const data = {
+        name: obj.name,
+        email: obj.email,
+        profile_img: obj.picture,
+      };
+      axios.post("http://localhost:5000/login", data);
+
+      props.changeAccount({
+        ...data,
+        status: userLogin ? "user" : "penyelenggara",
+      });
+
+      userLogin ? navigate("/penyelenggara") : navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    google.accounts.id.initialize({
+      client_id:
+        "4132285366-tscm0u9347v2hb6h11g759bbjmk2co66.apps.googleusercontent.com",
+      callback: (response) => handleCallbackResponse(response, userLogin),
+    });
+
+    google.accounts.id.renderButton(document.getElementById("signInDiv"), {
+      theme: "outline",
+      size: "large",
+    });
+  }, [userLogin]);
 
   return (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-2/3 p-3 xs:max-w-md md:max-w-3xl">
@@ -82,6 +122,8 @@ const Login = () => {
               </div>
             </div>
           </div>
+
+          <div id="signInDiv"></div>
         </div>
       </div>
     </div>

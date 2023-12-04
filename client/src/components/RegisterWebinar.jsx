@@ -43,9 +43,6 @@ const RegisterWebinar = () => {
     const formData = new FormData();
     formData.append("file", file);
 
-    console.log(file);
-    console.log(webinarData);
-
     for (const property in webinarData) {
       formData.append(property, webinarData[property]);
     }
@@ -56,6 +53,8 @@ const RegisterWebinar = () => {
           "Content-type": "multipart/form-data",
         },
       });
+
+      console.log("HOHOOHOHOH");
     } catch (err) {
       console.log(err.message);
     }

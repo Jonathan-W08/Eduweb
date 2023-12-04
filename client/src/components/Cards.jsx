@@ -10,8 +10,6 @@ const Cards = () => {
       try {
         const response = await axios.get("http://localhost:5000/");
         const data = await response.data;
-
-        console.log(data);
         setWebinars(data);
       } catch (err) {
         console.log(err.message);

@@ -1,9 +1,20 @@
 import Footer from "./Footer";
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./Navbar";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
-const UserLayout = () => {
+const UserLayout = (props) => {
+  const navigate = useNavigate();
+
+  // Check Status Account
+  useEffect(() => {
+    if (!props.account.status) {
+      navigate("/login");
+    } else if (props.account.status !== "user") {
+      navigate("/penyelenggara");
+    }
+  });
+
   return (
     <div>
       <Navbar />

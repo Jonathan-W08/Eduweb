@@ -27,10 +27,6 @@ export const getWebinarById = async (req, res) => {
 };
 
 export const createWebinar = async (req, res) => {
-  console.log("BATA ATAS");
-  console.log(req.body.title);
-  console.log("BATA BAWAH");
-
   if (req.files === null)
     return res.status(400).json({ msg: "No File Uploaded" });
   const name = req.body.title;

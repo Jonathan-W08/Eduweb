@@ -1,17 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Dashboard from "./Dashboard";
 import Footer from "./Footer";
 import NavbarTwo from "./NavbarTwo";
 import RegisterWebinar from "./RegisterWebinar";
 import Sidebar from "./Sidebar";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
-const PenyelenggaraLayout = () => {
+const PenyelenggaraLayout = (props) => {
+  const navigate = useNavigate();
+
+  // Control Sidebar
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const controlSidebarOpen = () => {
     setSidebarOpen((prev) => !prev);
   };
+
+  // Check Status Account
+  useEffect(() => {
+    if (!props.account.status) {
+      navigate("/login");
+    } else if (props.account.status !== "penyelenggara") {
+      navigate("/");
+    }
+  });
 
   return (
     <div>
