@@ -9,6 +9,9 @@ import Profile from "./components/Profile";
 import RegisterWebinar from "./components/RegisterWebinar";
 import UserLayout from "./components/UserLayout";
 import { useEffect, useState } from "react";
+import TentangKami from "./components/Tentangkami";
+import Partsipasi from "./components/Partsipasi";
+import Webinar from "./components/Webinar";
 
 export default function App() {
   // const navigate = useNavigate();
@@ -39,6 +42,9 @@ export default function App() {
           <Route path="/" element={<UserLayout account={account} />}>
             <Route index element={<Homepage />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="tentangkami" element={<TentangKami />} />
+            <Route path="partsipasi" element={<Partsipasi />} />
+            <Route path="webinar" element={<Webinar />} />
           </Route>
 
           <Route
