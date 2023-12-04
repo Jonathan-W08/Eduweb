@@ -6,7 +6,7 @@ import { RiPhoneFindLine } from "react-icons/ri";
 
 const Tentangkami = () => {
   return (
-    <div className="flex flex-row items-center justify-center space-x-4" style={{margin:"20px", padding:"20px", backgroundColor:"white"}}>
+    <div className="grid grid-cols-2 gap-4" style={{margin:"20px", padding:"20px", backgroundColor:"white"}}>
       <div>
       <h1 className="text-[70px] font-bold text-center" style={{margin:"8rem"}}>EDUWEB MENYEDIAKAN INFORMASI MENGENAI WEBINAR </h1>
       <h1 className="text-[30px] text-center" >Memudahkan dalam mencari informasi mengenai webinar - webinar yang akan diadakan</h1>
@@ -43,6 +43,11 @@ const Tentangkami = () => {
     </Card>
 
       
+</div>
+
+<div>
+<h1 className="text-[70px] font-bold text-center" >Sejarah Kami </h1>
+
 </div>
 
      
