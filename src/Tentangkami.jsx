@@ -50,16 +50,35 @@ const Tentangkami = () => {
     </div> 
 </div>
 
+<div className="mt-10">
+
 <div>
 <h1 className="text-[70px] font-bold text-center" >Sejarah Kami </h1>
 
 </div>
-<div>
-  <img className="w-5 m-10" src="./public/Logo_Eduweb.png" alt="logo" />
+
+<div className="flex flex-row justify-between p-5 m-5">
+
+  <div className="">
+  <img className="p-10 mx-10" style={{width:"1000px", height:"200px"}}src="./public/Logo_Eduweb.png" alt="logo" />
+  </div>
+
+  <div className="flex flex-col">
+  <h1 className="" style={{fontSize:"30px"}}>#ChooseYourEducation</h1>
+  <h1 className="" style={{fontSize:"30px"}}>FindYourWebinar!</h1>
+  </div>
+
+  <div className="">
+  <h1 className="" style={{fontSize:"30px", textAlign:"justify"}}>Eduweb terpercaya dalam memberikan informasi informasi mengenai event - event webinar yang akan diselenggarakan
+
+<br />Banyaknya user yang kesulitan mencari informasi mengenai webinar dan banyaknya penyelenggara yang kesulitan mencari wadah untuk mempromosikan eventnya, oleh karena itu kami hadir dengan memberikan solusi yang mempermudah user dan penyelenggara event.</h1>
+  </div>
+
+
 </div>
 
      
-
+</div>
     </div>
     
   )

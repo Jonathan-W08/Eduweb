@@ -39,7 +39,7 @@ const Navbar = () => {
           <Searchbar />
           <ul className="mt-6 md:mt-0 md:flex md:items-center md:flex-1 md:text-center">
             <li className="grow">
-              <NavLink className="block w-full p-3">Beranda</NavLink>
+              <NavLink className="block w-full p-3" to={"/homepage"}>Beranda</NavLink>
             </li>
             <li className="grow">
               <NavLink className="block w-full p-3">Partisipasi</NavLink>

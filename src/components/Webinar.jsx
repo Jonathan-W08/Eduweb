@@ -11,7 +11,7 @@ const Webinar = () => {
 
 
       <div>
-        <h5 className="text-5xl font-bold tracking-tight text-gray-900 dark:text-white mx-20" style={{width:"870px",borderBottom:"5px solid #000"}}>
+        <h5 className="text-5xl font-bold tracking-tight text-gray-900 dark:text-white m-10 mx-20" style={{width:"870px",borderBottom:"5px solid #000"}}>
             Detail Pendaftaran
             </h5>
             </div>
@@ -77,7 +77,7 @@ const Webinar = () => {
         <Label htmlFor="agree" className="flex">Saya setuju dengan Syarat & Ketentuan yang benar di eduweb.&nbsp;</Label>
       </div>
       
-      <Button className='bg-midBlue'> <Link to={"/webinar"}>Daftar Webinar</Link></Button>
+      <Button className='bg-midBlue'> <Link to={"/homepage"}>Daftar Webinar</Link></Button>
     
     
     </div>

@@ -26,7 +26,7 @@ export default function App() {
             <Route path="profile" element={<Profile />} />
             <Route path="tentangkami" element={<Tentangkami />} />
             <Route path="partsipasi" element={<Partsipasi />} />
-            <Route path="partsipasi" element={<Partsipasi />} />
+            <Route path="homepage" element={<Homepage />} />
             <Route path="webinar" element={<Webinar />} />
           </Route>
 
