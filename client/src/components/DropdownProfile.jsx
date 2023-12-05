@@ -1,21 +1,20 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const DropdownProfile = (props) => {
+  const account = useSelector((props) => props.account.account);
+
   return (
     <div className="absolute z-[60] top-full right-5 w-min bg-white rounded-md shadow-md">
       <div className="border-b-2 border-black">
         <div className="flex items-center p-3">
           <div className="w-8">
-            <img
-              src="/public/Logo_Infinite.png"
-              alt="Logo"
-              className="w-full"
-            />
+            <img src={account.profile_img} alt="Logo" className="w-full" />
           </div>
           <div className="ml-3">
-            <p>{props.name}</p>
-            <p className="text-xs">{props.email}</p>
+            <p>{account.name}</p>
+            <p className="text-xs">{account.email}</p>
           </div>
         </div>
       </div>

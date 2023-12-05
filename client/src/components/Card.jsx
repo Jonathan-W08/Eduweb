@@ -22,7 +22,11 @@ const Card = (props) => {
           </p>
 
           <div className="flex items-center mt-4">
-            <img className=" w-9" src={props.profileImg} alt="logo" />
+            <img
+              className="w-9 rounded-full"
+              src={props.profileImg}
+              alt="logo"
+            />
             <p className="text-xs ml-2 font-bold">{props.penyelenggara}</p>
           </div>
 

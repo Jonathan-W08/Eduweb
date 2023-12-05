@@ -13,21 +13,16 @@ import TentangKami from "./components/Tentangkami";
 import Partsipasi from "./components/Partsipasi";
 import Webinar from "./components/Webinar";
 
+import { useSelector, useDispatch } from "react-redux";
+
+import { accountActions } from "./store/account-slice";
+
 export default function App() {
-  // const navigate = useNavigate();
-
-  // Account temp
-  const [account, setAccount] = useState({
-    name: "",
-    email: "",
-    profile_img: "",
-    status: "",
-  });
-
-  console.log(account);
-
+  // Account Data
+  const account = useSelector((state) => state.account.account);
+  const dispatch = useDispatch();
   const changeAccount = (data) => {
-    setAccount(data);
+    dispatch(accountActions.changeAccount(data));
   };
 
   return (

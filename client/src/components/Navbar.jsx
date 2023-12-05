@@ -5,8 +5,12 @@ import Searchbar from "./Searchbar";
 import { ChevronDown, List } from "react-bootstrap-icons";
 import DropdownProfile from "./DropdownProfile";
 import NavbarMobile from "./NavbarMobile";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  // Account Data
+  const account = useSelector((props) => props.account.account);
+
   const [dropdownProfileOpen, setDropdownProfileOpen] = useState(false);
 
   const controlDropdownProfileOpen = () => {
@@ -39,12 +43,9 @@ const Navbar = () => {
           <Searchbar />
           <ul className="mt-6 md:mt-0 md:flex md:items-center md:flex-1 md:text-center">
             <li className="grow">
-
-             
               <NavLink className="block w-full p-3" to={"homepage/"}>
                 Beranda
               </NavLink>
-
             </li>
             <li className="grow">
               <NavLink className="block w-full p-3" to={"/partsipasi"}>
@@ -67,7 +68,11 @@ const Navbar = () => {
         onClick={controlDropdownProfileOpen}
       >
         <div className="w-full">
-          <img src="/public/Logo_Infinite.png" alt="Logo" className=" w-8" />
+          <img
+            src={account.profile_img}
+            alt="Logo"
+            className=" w-8 rounded-full"
+          />
         </div>
 
         <div className="ml-1">
@@ -76,8 +81,6 @@ const Navbar = () => {
       </div>
       {dropdownProfileOpen && (
         <DropdownProfile
-          name="Angel Naibaho"
-          email="angelnaibaho@gmail.com"
           linkList={[
             { name: "Profil", route: "/profile" },
             { name: "Partisipasi", route: "/partsipasi" },

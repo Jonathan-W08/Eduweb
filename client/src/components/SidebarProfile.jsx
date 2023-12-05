@@ -8,14 +8,18 @@ import {
   ChevronRight,
 } from "react-bootstrap-icons";
 
-const SidebarProfile = () => {
+const SidebarProfile = (props) => {
   return (
     <div className="hidden md:block md:col-span-4 md:bg-white md:p-3 md:rounded-md md:h-min md:shadow-md md:mt-6 xl:p-6">
       <div className="md:flex md:gap-3 md:items-center">
-        <img src="/profile_img.png" alt="profile images" className="md:w-1/3" />
+        <img
+          src={props.account.profile_img}
+          alt="profile images"
+          className="md:w-1/3 rounded-full"
+        />
         <div className="md:flex-1 md:break-all">
-          <p className="md:font-bold">Angel Naibaho</p>
-          <p className="md:text-xs">angelnaibaho@gmail.com</p>
+          <p className="md:font-bold">{props.account.name}</p>
+          <p className="md:text-xs">{props.account.email}</p>
         </div>
       </div>
       <div className="md:mt-6">

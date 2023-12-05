@@ -5,8 +5,11 @@ import NavbarTwo from "./NavbarTwo";
 import RegisterWebinar from "./RegisterWebinar";
 import Sidebar from "./Sidebar";
 import { Outlet, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const PenyelenggaraLayout = (props) => {
+  const account = useSelector((props) => props.account);
+
   const navigate = useNavigate();
 
   // Control Sidebar

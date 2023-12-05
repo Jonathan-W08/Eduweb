@@ -5,8 +5,12 @@ import SelectRegister from "./SelectRegister";
 import axios from "axios";
 import generateUniqueId from "generate-unique-id";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const RegisterWebinar = () => {
+  // Account Data
+  const account = useSelector((props) => props.account.account);
+
   const navigation = useNavigate();
 
   // Image Process
@@ -25,9 +29,9 @@ const RegisterWebinar = () => {
     categories: "IT Development",
     date: "",
     time: "",
-    penyelenggara: "",
+    penyelenggara: account.name,
     cost: "",
-    profile_img: "",
+    profile_img: account.profile_img,
     webinar_img: "",
   });
 

@@ -3,8 +3,12 @@ import { NavLink } from "react-router-dom";
 
 import { ChevronDown, List } from "react-bootstrap-icons";
 import DropdownProfile from "./DropdownProfile";
+import { useSelector } from "react-redux";
 
 const NavbarTwo = (props) => {
+  // Account data
+  const account = useSelector((props) => props.account.account);
+
   const [dropdownProfileOpen, setDropdownProfileOpen] = useState(false);
 
   const controlDropdownProfileOpen = () => {
@@ -32,7 +36,11 @@ const NavbarTwo = (props) => {
         onClick={controlDropdownProfileOpen}
       >
         <div className="w-full">
-          <img src="/public/Logo_Infinite.png" alt="Logo" className=" w-8" />
+          <img
+            src={account.profile_img}
+            alt="Logo"
+            className=" w-8 rounded-full"
+          />
         </div>
 
         <div className="ml-1">
@@ -41,8 +49,6 @@ const NavbarTwo = (props) => {
       </div>
       {dropdownProfileOpen && (
         <DropdownProfile
-          name="Penyelenggara"
-          email="penyelenggara@gmail.com"
           linkList={[
             { name: "Dashboard", route: "/penyelenggara/dashboard" },
             {
