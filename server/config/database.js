@@ -1,8 +1,9 @@
-import { Sequelize } from "sequelize";
+import mysqlPromise from "mysql2/promise.js";
 
-const db = new Sequelize("db_eduweb", "root", "", {
+const db = mysqlPromise.createPool({
   host: "localhost",
-  dialect: "mysql",
+  user: "root",
+  database: "db_eduweb",
 });
 
 export default db;

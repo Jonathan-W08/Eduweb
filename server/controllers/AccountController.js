@@ -1,17 +1,26 @@
-import Account from "../models/AccountModel.js";
+import db from "../config/database.js";
 import generateUniqueId from "generate-unique-id";
 
 export const createAccount = async (req, res) => {
   try {
-    const accExist = await Account.findOne({
-      where: {
-        email: req.body.email,
-      },
-    });
+    const [rows, field] = await db.query(
+      `SELECT * FROM account WHERE email='${req.body.email}'`
+    );
 
-    if (accExist !== null) return;
+    if (rows[0] !== null) return;
 
-    await Account.create({ ...req.body, id: generateUniqueId() });
+    const sql =
+      "INSERT INTO users (id, name, email, profile_img) VALUES (?, ?, ?, ?)";
+
+    const uniqueId = generateUniqueId();
+    const values = [
+      uniqueId,
+      req.body.name,
+      req.body.email,
+      req.body.profile_img,
+    ];
+
+    await db.query(sql, values);
   } catch (err) {
     console.log(err);
   }

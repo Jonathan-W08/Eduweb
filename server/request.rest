@@ -2,14 +2,14 @@ GET http://localhost:5000/
 
 ###
 
-GET http://localhost:5000/1234
+GET http://localhost:5000/0noltvljyvv13jymlco8
 
 
 ###
 POST http://localhost:5000/webinars
 Content-Type: application/json
 {
-    "id": 89348658,
+    "id": "0qoltvljyvv13jymlco8",
     "title": "ssssFundamental UI/UX design: Wifeframing dan Prototyping",
     "categories": "Sertifikat, IT Development",
     "date": "Jumat, 17 Nov 2023",

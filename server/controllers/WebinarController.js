@@ -1,13 +1,12 @@
-import Webinar from "../models/WebinarModel.js";
+import db from "../config/database.js";
 
 import path from "path";
-import fs from "fs";
 import generateUniqueId from "generate-unique-id";
 
 export const getWebinars = async (req, res) => {
   try {
-    const response = await Webinar.findAll();
-    res.status(200).json(response);
+    const [rows, fields] = await db.query(`SELECT * FROM webinars`);
+    res.status(200).json(rows);
   } catch (err) {
     console.log(err.message);
   }
@@ -15,12 +14,10 @@ export const getWebinars = async (req, res) => {
 
 export const getWebinarById = async (req, res) => {
   try {
-    const response = await Webinar.findOne({
-      where: {
-        id: req.params.id,
-      },
-    });
-    res.status(200).json(response);
+    const [rows, fields] = await db.query(
+      `SELECT * FROM webinars WHERE id='${req.params.id}'`
+    );
+    res.status(200).json(rows);
   } catch (err) {
     console.log(err.message);
   }
@@ -45,11 +42,25 @@ export const createWebinar = async (req, res) => {
   file.mv(`./public/images/${fileName}`, async (err) => {
     if (err) return res.status(500).json({ msg: err.message });
     try {
-      const response = await Webinar.create({
-        ...req.body,
-        webinar_img: url,
-        id: generateUniqueId(),
-      });
+      const uniqueId = generateUniqueId();
+
+      const sql = `INSERT INTO webinars (id, title, categories, date, time, penyelenggara, cost, profile_img, webinar_img)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+
+      const values = [
+        uniqueId,
+        req.body.title,
+        req.body.categories,
+        req.body.date,
+        req.body.time,
+        req.body.penyelenggara,
+        req.body.cost,
+        req.body.profile_img,
+        url,
+      ];
+
+      await db.query(sql, values);
+
       res.status(201).json({ msg: "Webinar created" });
     } catch (error) {
       console.log(error.message);
