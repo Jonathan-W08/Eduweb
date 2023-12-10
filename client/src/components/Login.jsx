@@ -4,13 +4,26 @@ import InputLogin from "./InputLogin";
 
 import { Link, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import generateUniqueId from "generate-unique-id";
 import axios from "axios";
+import CryptoJS from "crypto-js";
 
 import { Google, Facebook } from "react-bootstrap-icons";
 import { Button, Checkbox } from "flowbite-react";
+import Cookies from "js-cookie";
 
 const Login = (props) => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!props.account.status) {
+      navigate("/login");
+    } else if (props.account.status === "user") {
+      navigate("/");
+    } else if (props.account.status === "penyelenggara") {
+      navigate("/penyelenggara");
+    }
+  }, [props.account]);
 
   // Status Login
   const [userLogin, setUserLogin] = useState(true);
@@ -20,14 +33,27 @@ const Login = (props) => {
   };
 
   // Handle Google Login
-  const handleCallbackResponse = (response, userLogin) => {
+  const handleCallbackResponse = async (response, userLogin) => {
     try {
-      let obj = jwtDecode(response.credential);
+      // Take google data
+      const obj = jwtDecode(response.credential);
+
       const data = {
         name: obj.name,
         email: obj.email,
         profile_img: obj.picture,
       };
+
+      // Create Cookie
+      const cookieEc = CryptoJS.AES.encrypt(
+        JSON.stringify(data.email),
+        "eduweb"
+      ).toString();
+
+      Cookies.set("id", cookieEc);
+      Cookies.set("status", userLogin ? "user" : "penyelenggara");
+
+      // Create new account
       axios.post("http://localhost:5000/login", data);
 
       props.changeAccount({

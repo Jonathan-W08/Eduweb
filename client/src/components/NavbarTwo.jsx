@@ -55,7 +55,6 @@ const NavbarTwo = (props) => {
               name: "Register",
               route: "/penyelenggara/dashboard/register-webinar",
             },
-            { name: "Log Out", route: "/login" },
           ]}
         />
       )}

@@ -86,7 +86,6 @@ const Navbar = () => {
             { name: "Partisipasi", route: "/partsipasi" },
             { name: "Keamanan", route: "/" },
             { name: "Syarat dan Kondisi", route: "/" },
-            { name: "Log Out", route: "/login" },
           ]}
         />
       )}

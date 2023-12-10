@@ -7,7 +7,9 @@ export const createAccount = async (req, res) => {
       `SELECT * FROM account WHERE email='${req.body.email}'`
     );
 
-    if (rows[0] !== null) return;
+    if (rows[0] !== null) {
+      return;
+    }
 
     const sql =
       "INSERT INTO users (id, name, email, profile_img) VALUES (?, ?, ?, ?)";
@@ -21,6 +23,16 @@ export const createAccount = async (req, res) => {
     ];
 
     await db.query(sql, values);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const signInAccount = async (req, res) => {
+  try {
+    const [rows, field] = await db.query(`SELECT * FROM account`);
+
+    res.status(200).json(rows);
   } catch (err) {
     console.log(err);
   }
