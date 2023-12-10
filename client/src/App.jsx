@@ -19,6 +19,7 @@ import CryptoJS from "crypto-js";
 import axios from "axios";
 
 import { accountActions } from "./store/account-slice";
+import ConfirmBox from "./components/ConfirmBox";
 
 export default function App() {
   // Account Data
