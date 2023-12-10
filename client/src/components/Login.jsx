@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react";
-import InputRegister from "./InputRegister";
-import InputLogin from "./InputLogin";
 
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
-import generateUniqueId from "generate-unique-id";
 import axios from "axios";
 import CryptoJS from "crypto-js";
 
-import { Google, Facebook } from "react-bootstrap-icons";
-import { Button, Checkbox } from "flowbite-react";
+import { Checkbox } from "flowbite-react";
 import Cookies from "js-cookie";
 
 const Login = (props) => {

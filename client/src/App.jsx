@@ -75,30 +75,32 @@ export default function App() {
       Cookie.set("status", "");
     }
 
-    // descrypt cookie id
-    const cookieDc = CryptoJS.AES.decrypt(getCookieId, "eduweb");
-    const cookieDcData = cookieDc.toString(CryptoJS.enc.Utf8);
+    if (getCookieId === "" || getCookieStatus === "") {
+      // descrypt cookie id
+      const cookieDc = CryptoJS.AES.decrypt(getCookieId, "eduweb");
+      const cookieDcData = cookieDc.toString(CryptoJS.enc.Utf8);
 
-    // filter account
-    getAccount().then((data) => {
-      data.forEach((each) => {
-        const email = `"${each.email}"`;
-        if (email === cookieDcData) {
-          // Gather data
-          const data = {
-            name: each.name,
-            email: each.email,
-            profile_img: each.profile_img,
-          };
+      // filter account
+      getAccount().then((data) => {
+        data.forEach((each) => {
+          const email = `"${each.email}"`;
+          if (email === cookieDcData) {
+            // Gather data
+            const data = {
+              name: each.name,
+              email: each.email,
+              profile_img: each.profile_img,
+            };
 
-          // change account
-          changeAccount({
-            ...data,
-            status: getCookieStatus,
-          });
-        }
+            // change account
+            changeAccount({
+              ...data,
+              status: getCookieStatus,
+            });
+          }
+        });
       });
-    });
+    }
   }, []);
 
   return (
