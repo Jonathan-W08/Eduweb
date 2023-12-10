@@ -14,6 +14,9 @@ import Partsipasi from "./components/Partsipasi";
 import Webinar from "./components/Webinar";
 
 import { useSelector, useDispatch } from "react-redux";
+import Cookie from "js-cookie";
+import CryptoJS from "crypto-js";
+import axios from "axios";
 
 import { accountActions } from "./store/account-slice";
 
@@ -25,13 +28,55 @@ export default function App() {
     dispatch(accountActions.changeAccount(data));
   };
 
+  console.log(account);
+
+  // Get account from database
+  const getAccount = async () => {
+    const response = await axios.get("http://localhost:5000/login/check");
+    const data = await response.data;
+    return data;
+  };
+
+  useEffect(() => {
+    // get cookie id
+    const getCookieId = Cookie.get("id");
+
+    // get cookie status
+    const getCookieStatus = Cookie.get("status");
+
+    // descrypt cookie id
+    const cookieDc = CryptoJS.AES.decrypt(getCookieId, "eduweb");
+    const cookieDcData = cookieDc.toString(CryptoJS.enc.Utf8);
+
+    // filter account
+    getAccount().then((data) => {
+      data.forEach((each) => {
+        const email = `"${each.email}"`;
+        if (email === cookieDcData) {
+          // Gather data
+          const data = {
+            name: each.name,
+            email: each.email,
+            profile_img: each.profile_img,
+          };
+
+          // change account
+          changeAccount({
+            ...data,
+            status: getCookieStatus,
+          });
+        }
+      });
+    });
+  }, []);
+
   return (
     <div className="font-sans">
       <BrowserRouter>
         <Routes>
           <Route
             path="/login"
-            element={<Login changeAccount={changeAccount} />}
+            element={<Login changeAccount={changeAccount} account={account} />}
           />
 
           <Route path="/" element={<UserLayout account={account} />}>

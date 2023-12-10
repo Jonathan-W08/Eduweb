@@ -12,9 +12,11 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
     "axios": "^0.26.1",
+    "crypto-js": "^4.2.0",
     "flowbite": "^2.2.0",
     "flowbite-react": "^0.7.0",
     "generate-unique-id": "^2.0.3",
+    "js-cookie": "^3.0.5",
     "jwt-decode": "^4.0.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
