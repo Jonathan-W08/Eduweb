@@ -1,6 +1,6 @@
 import React from "react";
 import CardDashboard from "./CardDashboard";
-import { LuTrash } from "react-icons/lu";
+
 import { FaEdit } from "react-icons/fa";
 import ConfirmDelete from "./ConfirmDelete";
 
