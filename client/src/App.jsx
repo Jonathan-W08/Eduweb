@@ -16,7 +16,6 @@ import Webinar from "./components/Webinar";
 import { useSelector, useDispatch } from "react-redux";
 
 import { accountActions } from "./store/account-slice";
-import ConfirmBox from "./components/ConfirmBox";
 
 export default function App() {
   // Account Data
