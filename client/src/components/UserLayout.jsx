@@ -10,17 +10,17 @@ const UserLayout = (props) => {
   useEffect(() => {
     if (!props.account.status) {
       navigate("/login");
-    } else if (props.account.status !== "user") {
+    } else if (props.account.status === "penyelenggara") {
       navigate("/penyelenggara");
     }
   });
 
   return (
-    <div>
+    <>
       <Navbar />
       <Outlet />
       <Footer />
-    </div>
+    </>
   );
 };
 

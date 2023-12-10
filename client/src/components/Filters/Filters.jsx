@@ -12,7 +12,15 @@ import "./filters.css";
 import { Navigation } from "swiper/modules";
 import SwipeButtons from "./SwipeButtons";
 
-const Filters = () => {
+const Filters = (props) => {
+  const [filters, setFilters] = useState([
+    "IT Development",
+    "Bisnis",
+    "Marketing",
+    "Bahasa Inggris",
+    "Self Development",
+  ]);
+
   const [navigationShow, setNavigationShow] = useState(false);
   const [slidesPerView, setSlidesPerView] = useState(1);
 
@@ -42,7 +50,6 @@ const Filters = () => {
 
   return (
     <div
-
       className="relative mt-6 p-3 sm:p-6 xl:px-12"
       onMouseEnter={() => {
         setNavigationShow(true);
@@ -57,29 +64,26 @@ const Filters = () => {
         spaceBetween={25}
         className="mySwiper cursor-grab select-none"
       >
-
         <SwipeButtons
           className={" h-full leading-none opacity-50"}
           navigationShow={navigationShow}
         />
-        <SwiperSlide className="opacity-50 text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer transition-all hover:opacity-100">
-          Semua
-        </SwiperSlide>
-        <SwiperSlide className="opacity-50 text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer transition-all hover:opacity-100">
-          IT Development
-        </SwiperSlide>
-        <SwiperSlide className="opacity-50 text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer transition-all hover:opacity-100">
-          Marketing
-        </SwiperSlide>
-        <SwiperSlide className="opacity-50 text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer transition-all hover:opacity-100">
-          Bisnis
-        </SwiperSlide>
-        <SwiperSlide className="opacity-50 text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer transition-all hover:opacity-100">
-          Bahasa Inggris
-        </SwiperSlide>
-        <SwiperSlide className="opacity-50 text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer transition-all hover:opacity-100">
-          Self Development
-        </SwiperSlide>
+
+        {filters.map((filter, i) => {
+          return (
+            <SwiperSlide
+              key={i}
+              className={`${
+                props.filterActive[filter]
+                  ? "opcacity-100 bg-lightBlue"
+                  : "opacity-50"
+              } text-sm px-3 py-2 rounded-md border border-gray-500 w-max cursor-pointer transition-all hover:opacity-100`}
+              onClick={() => props.changeFilterActive(filter)}
+            >
+              {filter}
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </div>
   );

@@ -2,16 +2,16 @@ import React from "react";
 
 import { NavLink } from "react-router-dom";
 
-import { List, HouseDoorFill, Laptop } from "react-bootstrap-icons";
+import { HouseDoorFill, Laptop } from "react-bootstrap-icons";
 
 const Sidebar = (props) => {
   return (
     <div
       className={`absolute z-50 overflow-hidden flex flex-col bg-white ${
         props.sidebarOpen ? "w-full" : "w-0"
-      } min-h-screen transition-all md:relative md:w-min md:px-5`}
+      } min-h-screen transition-all lg:relative lg:w-72 lg:px-5`}
     >
-      <div className="flex items-center p-3 mt-6">
+      <div className="flex items-center p-3 mt-6 break-all">
         <div className="min-w-[3rem] w-12">
           <img src="/public/Logo_Infinite.png" alt="Logo" className="w-full" />
         </div>
