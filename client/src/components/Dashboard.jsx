@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { FaEdit } from "react-icons/fa";
 import ConfirmDelete from "./ConfirmDelete";
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   // Data webinars
   const webinars = useSelector((state) => state.webinars.webinars);
 
@@ -49,21 +49,27 @@ const Dashboard = () => {
             <tbody>
               {webinars.map((webinar) => {
                 return (
-                  <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                  <tr
+                    key={webinar.id}
+                    className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
+                  >
                     <th
                       scope="row"
-                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                     >
                       {webinar.title}
                     </th>
-                    <td class="px-6 py-4">
+                    <td className="px-6 py-4">
                       {webinar.date} / {webinar.time}
                     </td>
 
-                    <td class="px-6 py-4">
-                      <ConfirmDelete />
+                    <td className="px-6 py-4">
+                      <ConfirmDelete
+                        id={webinar.id}
+                        getWebinars={props.getWebinars}
+                      />
                     </td>
-                    <td class="px-6 py-4">
+                    <td className="px-6 py-4">
                       <Link
                         to={`/penyelenggara/dashboard/update-webinar/${webinar.id}`}
                       >

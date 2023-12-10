@@ -137,11 +137,9 @@ export const updateWebinar = async (req, res) => {
 
 export const deleteWebinar = async (req, res) => {
   try {
-    await Webinar.destroy({
-      where: {
-        id: req.params.id,
-      },
-    });
+    const id = req.params.id;
+    const sql = `DELETE FROM webinars WHERE id=?`;
+    await db.query(sql, id);
     res.status(200).json({ msg: "Webinar deleted" });
   } catch (err) {
     console.log(err.message);

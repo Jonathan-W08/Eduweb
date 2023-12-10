@@ -1,11 +1,30 @@
 import React from "react";
+import axios from "axios";
+
 import { Button, Modal } from "flowbite-react";
 import { useState } from "react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { FaTrash } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { webinarsActions } from "../store/webinar-slice";
 
-const ConfirmDelete = () => {
+const ConfirmDelete = (props) => {
+  const dispatch = useDispatch();
+
   const [openModal, setOpenModal] = useState(false);
+
+  // Delete Webinar
+  const deleteWebinar = async () => {
+    try {
+      await axios.delete(`http://localhost:5000/webinars/${props.id}`);
+      props.getWebinars();
+      setOpenModal(false);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   return (
     <>
       <Button onClick={() => setOpenModal(true)}>
@@ -25,7 +44,7 @@ const ConfirmDelete = () => {
               Apakah anda ingin menghapus webinar ini?
             </h3>
             <div className="flex justify-center gap-4">
-              <Button color="failure" onClick={() => setOpenModal(false)}>
+              <Button color="failure" onClick={deleteWebinar}>
                 {"Iya"}
               </Button>
               <Button color="gray" onClick={() => setOpenModal(false)}>

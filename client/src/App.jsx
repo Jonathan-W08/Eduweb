@@ -125,7 +125,7 @@ export default function App() {
           >
             <Route index element={<Homepage />} />
             <Route path="dashboard" element={<PeyelenggaraSidebarLayout />}>
-              <Route index element={<Dashboard />} />
+              <Route index element={<Dashboard getWebinars={getWebinars} />} />
               <Route
                 path="register-webinar"
                 element={<RegisterWebinar getWebinars={getWebinars} />}
