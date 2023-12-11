@@ -10,6 +10,9 @@ const UpdateWebinar = () => {
   const navigation = useNavigate();
   const { id } = useParams();
 
+  // Account Data
+  const account = useSelector((state) => state.account.account);
+
   // Webinars Data
   const webinars = useSelector((props) => props.webinars.webinars);
 
@@ -23,10 +26,18 @@ const UpdateWebinar = () => {
     cost: "",
     profile_img: "",
     webinar_img: "",
+    id_penyelenggara: "",
   });
 
   useEffect(() => {
+    console.log("JALAN");
     const webinar = webinars.find((webinar) => webinar.id === id);
+
+    if (webinar.id_penyelenggara !== account.id) {
+      navigation("/penyelenggara/dashboard");
+      return;
+    }
+
     if (webinar) {
       setWebinarData({
         title: webinar.title,
@@ -37,6 +48,7 @@ const UpdateWebinar = () => {
         cost: webinar.cost,
         profile_img: webinar.profile_img,
         webinar_img: webinar.webinar_img,
+        id_penyelenggara: webinar.id_penyelenggara,
       });
 
       setPreview(webinar.webinar_img);

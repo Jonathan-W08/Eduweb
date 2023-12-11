@@ -12,6 +12,9 @@ const Dashboard = (props) => {
   // Data webinars
   const webinars = useSelector((state) => state.webinars.webinars);
 
+  // Account Data
+  const account = useSelector((state) => state.account.account);
+
   return (
     <div className="flex-1 bg-whiteBlue w-5/6 min-h-screen p-6">
       <div className="mt-12">
@@ -48,36 +51,38 @@ const Dashboard = (props) => {
             </thead>
             <tbody>
               {webinars.map((webinar) => {
-                return (
-                  <tr
-                    key={webinar.id}
-                    className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
-                  >
-                    <th
-                      scope="row"
-                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                if (webinar.id_penyelenggara === account.id) {
+                  return (
+                    <tr
+                      key={webinar.id}
+                      className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
                     >
-                      {webinar.title}
-                    </th>
-                    <td className="px-6 py-4">
-                      {webinar.date} / {webinar.time}
-                    </td>
-
-                    <td className="px-6 py-4">
-                      <ConfirmDelete
-                        id={webinar.id}
-                        getWebinars={props.getWebinars}
-                      />
-                    </td>
-                    <td className="px-6 py-4">
-                      <Link
-                        to={`/penyelenggara/dashboard/update-webinar/${webinar.id}`}
+                      <th
+                        scope="row"
+                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                       >
-                        <FiEdit className="w-10" />
-                      </Link>
-                    </td>
-                  </tr>
-                );
+                        {webinar.title}
+                      </th>
+                      <td className="px-6 py-4">
+                        {webinar.date} / {webinar.time}
+                      </td>
+
+                      <td className="px-6 py-4">
+                        <ConfirmDelete
+                          id={webinar.id}
+                          getWebinars={props.getWebinars}
+                        />
+                      </td>
+                      <td className="px-6 py-4">
+                        <Link
+                          to={`/penyelenggara/dashboard/update-webinar/${webinar.id}`}
+                        >
+                          <FiEdit className="w-10" />
+                        </Link>
+                      </td>
+                    </tr>
+                  );
+                }
               })}
             </tbody>
           </table>

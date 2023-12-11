@@ -10,7 +10,6 @@ import Cookies from "js-cookie";
 
 const Login = (props) => {
   const navigate = useNavigate();
-
   useEffect(() => {
     if (!props.account.status) {
       navigate("/login");

@@ -75,7 +75,7 @@ export default function App() {
       Cookie.set("status", "");
     }
 
-    if (getCookieId === "" || getCookieStatus === "") {
+    if (getCookieId !== "" && getCookieStatus !== "") {
       // descrypt cookie id
       const cookieDc = CryptoJS.AES.decrypt(getCookieId, "eduweb");
       const cookieDcData = cookieDc.toString(CryptoJS.enc.Utf8);
@@ -87,6 +87,7 @@ export default function App() {
           if (email === cookieDcData) {
             // Gather data
             const data = {
+              id: each.id,
               name: each.name,
               email: each.email,
               profile_img: each.profile_img,

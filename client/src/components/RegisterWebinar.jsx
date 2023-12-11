@@ -32,6 +32,7 @@ const RegisterWebinar = (props) => {
     cost: "",
     profile_img: account.profile_img,
     webinar_img: "",
+    id_penyelenggara: account.id,
   });
 
   // Change Webinar Data

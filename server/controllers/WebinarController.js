@@ -44,8 +44,8 @@ export const createWebinar = async (req, res) => {
     try {
       const uniqueId = generateUniqueId();
 
-      const sql = `INSERT INTO webinars (id, title, categories, date, time, penyelenggara, cost, profile_img, webinar_img)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+      const sql = `INSERT INTO webinars (id, title, categories, date, time, penyelenggara, cost, profile_img, webinar_img, id_penyelenggara)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
       const values = [
         uniqueId,
@@ -57,6 +57,7 @@ export const createWebinar = async (req, res) => {
         req.body.cost,
         req.body.profile_img,
         url,
+        req.body.id_penyelenggara,
       ];
 
       await db.query(sql, values);
@@ -73,7 +74,7 @@ export const updateWebinar = async (req, res) => {
 
   if (req.files === null) {
     try {
-      const sql = `UPDATE webinars set title=?, categories=?, date=?, time=?, penyelenggara=?, cost=?, profile_img=?, webinar_img=? WHERE id=?`;
+      const sql = `UPDATE webinars set title=?, categories=?, date=?, time=?, penyelenggara=?, cost=?, profile_img=?, webinar_img=?, id_penyelenggara=? WHERE id=?`;
 
       const values = [
         req.body.title,
@@ -84,6 +85,7 @@ export const updateWebinar = async (req, res) => {
         req.body.cost,
         req.body.profile_img,
         req.body.webinar_img,
+        req.body.id_penyelenggara,
         id,
       ];
 
@@ -112,7 +114,7 @@ export const updateWebinar = async (req, res) => {
   file.mv(`./public/images/${fileName}`, async (err) => {
     if (err) return res.status(500).json({ msg: err.message });
     try {
-      const sql = `UPDATE webinars set title=?, categories=?, date=?, time=?, penyelenggara=?, cost=?, profile_img=?, webinar_img=? WHERE id=?`;
+      const sql = `UPDATE webinars set title=?, categories=?, date=?, time=?, penyelenggara=?, cost=?, profile_img=?, webinar_img=?, id_penyelenggara=? WHERE id=?`;
 
       const values = [
         req.body.title,
@@ -123,6 +125,7 @@ export const updateWebinar = async (req, res) => {
         req.body.cost,
         req.body.profile_img,
         url,
+        req.body.id_penyelenggara,
         id,
       ];
 

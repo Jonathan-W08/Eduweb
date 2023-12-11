@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="absolute w-screen top-full shadow-md">
-      <div className="flex flex-col gap-5 justify-center bg-white p-4 xs:flex-row xs:flex-wrap">
+      <div className="flex flex-col gap-5 justify-center items-start bg-white p-4 xs:flex-row xs:flex-wrap">
         <div className="flex items-center xs:basis-2card sm:basis-3card">
           <img className="w-9" src="/public/Logo_Eduweb.png" alt="logo" />
           <h1 className="font-semibold ml-2 xl:text-lg">EDUWEB</h1>

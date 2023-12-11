@@ -4,6 +4,7 @@ const accountSlice = createSlice({
   name: "account",
   initialState: {
     account: {
+      id: "",
       name: "",
       email: "",
       profile_img: "",
