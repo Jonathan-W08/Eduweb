@@ -1,11 +1,8 @@
 import React from "react";
 import CardDashboard from "./CardDashboard";
-import { LuTrash } from "react-icons/lu";
-
 import { FiEdit } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { FaEdit } from "react-icons/fa";
 import ConfirmDelete from "./ConfirmDelete";
 
 const Dashboard = (props) => {

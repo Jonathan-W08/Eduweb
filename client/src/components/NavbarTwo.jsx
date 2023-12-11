@@ -50,9 +50,9 @@ const NavbarTwo = (props) => {
       {dropdownProfileOpen && (
         <DropdownProfile
           linkList={[
-            { name: "Dashboard", route: "/penyelenggara/dashboard" },
+            { name: "Dasbor", route: "/penyelenggara/dashboard" },
             {
-              name: "Register",
+              name: "Daftar",
               route: "/penyelenggara/dashboard/register-webinar",
             },
           ]}

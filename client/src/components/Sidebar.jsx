@@ -27,7 +27,7 @@ const Sidebar = (props) => {
             <div className="text-2xl">
               <HouseDoorFill />
             </div>
-            <p className="ml-5">Dashboard</p>
+            <p className="ml-5">Dasbor</p>
           </div>
         </NavLink>
         <NavLink to={"/penyelenggara/dashboard/register-webinar"}>
@@ -35,7 +35,7 @@ const Sidebar = (props) => {
             <div className="text-2xl">
               <Laptop />
             </div>
-            <p className="ml-5">Register Webinar</p>
+            <p className="ml-5">Daftar Webinar</p>
           </div>
         </NavLink>
       </div>

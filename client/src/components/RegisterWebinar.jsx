@@ -73,7 +73,7 @@ const RegisterWebinar = (props) => {
 
   return (
     <div className="flex-1 bg-whiteBlue w-5/6 min-h-screen p-6">
-      <h1 className="text-3xl font-bold">Webinar Registration</h1>
+      <h1 className="text-3xl font-bold">Daftar Webinar</h1>
       <div className="mt-12">
         <form onSubmit={submitWebinar}>
           <InputRegister
@@ -109,7 +109,7 @@ const RegisterWebinar = (props) => {
 
           <div className="grid grid-cols-2 gap-3">
             <InputRegister
-              title={"Date"}
+              title={"Tanggal"}
               name={"date"}
               placeholder={""}
               required={true}
@@ -119,7 +119,7 @@ const RegisterWebinar = (props) => {
               changeWebinarData={changeWebinarData}
             />
             <InputRegister
-              title={"Time"}
+              title={"Waktu"}
               name={"time"}
               placeholder={"UI/UX Rules"}
               required={true}
@@ -143,7 +143,7 @@ const RegisterWebinar = (props) => {
           </div>
 
           <SelectRegister
-            title={"Category"}
+            title={"Kategori"}
             name={"categories"}
             options={[
               "IT Development",
@@ -161,7 +161,7 @@ const RegisterWebinar = (props) => {
             type="submit"
             className="bg-midBlue text-white px-6 py-2 mt-6 rounded-md"
           >
-            Submit
+            Kirim
           </button>
         </form>
       </div>

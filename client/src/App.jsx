@@ -13,6 +13,7 @@ import TentangKami from "./components/Tentangkami";
 import Partsipasi from "./components/Partsipasi";
 import Webinar from "./components/Webinar";
 import UpdateWebinar from "./components/UpdateWebinar";
+import Navpartisipasi from "./components/Navpartisipasi";
 
 import { useSelector, useDispatch } from "react-redux";
 import Cookie from "js-cookie";
@@ -120,6 +121,7 @@ export default function App() {
             <Route path="tentangkami" element={<TentangKami />} />
             <Route path="partsipasi" element={<Partsipasi />} />
             <Route path="webinar" element={<Webinar />} />
+            <Route path="navpartisipasi" element={<Navpartisipasi />} />
           </Route>
 
           <Route

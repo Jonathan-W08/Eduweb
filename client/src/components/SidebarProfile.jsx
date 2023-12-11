@@ -42,26 +42,7 @@ const SidebarProfile = (props) => {
           </div>
         </div>
       </div>
-      <div className="mt-6">
-        <p>General</p>
-        <div>
-          <div className="md:flex md:justify-between md:items-center md:border-black md:border-b-2 md:hover:text-midBlue md:hover:border-midBlue">
-            <div className="md:flex md:gap-1 md:items-center md:p-3 md:pl-0">
-              <Shield className="text-xl" />
-              <Link className="flex-1">Keamanan</Link>
-            </div>
-            <ChevronRight className="text-xl" />
-          </div>
-
-          <div className="md:flex md:justify-between md:items-center md:border-black md:border-b-2 md:hover:text-midBlue md:hover:border-midBlue">
-            <div className="md:flex md:gap-1 md:items-center md:p-3 md:pl-0">
-              <InfoCircle className="text-xl" />
-              <Link className="flex-1">Syarat dan Kondisi</Link>
-            </div>
-            <ChevronRight className="text-xl" />
-          </div>
-        </div>
-      </div>
+      
     </div>
   );
 };

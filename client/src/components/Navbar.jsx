@@ -48,7 +48,7 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li className="grow">
-              <NavLink className="block w-full p-3" to={"/partsipasi"}>
+              <NavLink className="block w-full p-3" to={"/navpartisipasi"}>
                 Partisipasi
               </NavLink>
             </li>
@@ -83,9 +83,8 @@ const Navbar = () => {
         <DropdownProfile
           linkList={[
             { name: "Profil", route: "/profile" },
-            { name: "Partisipasi", route: "/partsipasi" },
-            { name: "Keamanan", route: "/" },
-            { name: "Syarat dan Kondisi", route: "/" },
+            { name: "Partisipasi", route: "/navpartisipasi" },
+         
           ]}
         />
       )}
