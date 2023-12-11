@@ -30,7 +30,6 @@ const UpdateWebinar = () => {
   });
 
   useEffect(() => {
-    console.log("JALAN");
     const webinar = webinars.find((webinar) => webinar.id === id);
 
     if (webinar.id_penyelenggara !== account.id) {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CardDashboard from "./CardDashboard";
 import { FiEdit } from "react-icons/fi";
 import { useSelector } from "react-redux";
@@ -11,6 +11,10 @@ const Dashboard = (props) => {
 
   // Account Data
   const account = useSelector((state) => state.account.account);
+  useEffect(() => {
+    console.log(account);
+    props.getWebinars();
+  }, []);
 
   return (
     <div className="flex-1 bg-whiteBlue w-5/6 min-h-screen p-6">
