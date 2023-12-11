@@ -7,7 +7,7 @@ function Searchbar() {
       <TextInput
         type="text"
         icon={HiSearch}
-        placeholder="Search Here..."
+        placeholder="Pencaharian"
         required
       />
     </div>

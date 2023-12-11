@@ -57,7 +57,7 @@ const DropdownProfile = (props) => {
           onClick={logout}
           to={"/login"}
         >
-          Log Out
+          Keluar
         </Link>
       </div>
     </div>

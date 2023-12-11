@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react";
-import InputRegister from "./InputRegister";
-import InputLogin from "./InputLogin";
 
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
-import generateUniqueId from "generate-unique-id";
 import axios from "axios";
 import CryptoJS from "crypto-js";
 
-import { Google, Facebook } from "react-bootstrap-icons";
-import { Button, Checkbox } from "flowbite-react";
+import { Checkbox } from "flowbite-react";
 import Cookies from "js-cookie";
 
 const Login = (props) => {
@@ -91,29 +87,19 @@ const Login = (props) => {
           />
         </div>
 
-        <div className="w-full flex-1 p-3 md:p-6">
+        <div className="flex flex-col justify-around h-full w-full flex-1 p-3 md:p-6">
           <div className="text-center">
             <h1 className="text-3xl font-bold">LOGIN</h1>
-            <p className="text-xs">
-              Belum mempunyai akun?{" "}
-              <span className=" text-strongBlue">Buat akun kamu disini</span>
-            </p>
+            <p className="text-xs">Temukan berbagai macam webinar</p>
           </div>
 
           <div>
-            <InputLogin
-              title={"Username or email"}
-              id={"email"}
-              placeholder={"john@gmail.com"}
-              type={"email"}
-            />
-            <InputLogin
-              title={"Password"}
-              id={"password"}
-              placeholder={"Your password"}
-              type={"password"}
-            />
-            <div className="flex items-center mt-3 text-xs">
+            <p className="text-xs text-center">Login menggunakan Google</p>
+            <div id="signInDiv" className="flex justify-center"></div>
+          </div>
+          <div>
+            <p className="text-xs">Ingin mempromosikan webinar?</p>
+            <div className="flex items-center text-xs">
               <Checkbox
                 id="penyelenggara"
                 value={userLogin}
@@ -124,32 +110,6 @@ const Login = (props) => {
               </label>
             </div>
           </div>
-
-          <div className="flex justify-between items-center mt-6">
-            <Link className="text-xs">Lupa Password?</Link>
-            <Button
-              color="blue"
-              className="p-0"
-              as={Link}
-              to={userLogin ? "/" : "/penyelenggara"}
-            >
-              Submit
-            </Button>
-          </div>
-
-          <div className=" mt-6 text-center text-xs">
-            <p>Login Menggunakan</p>
-            <div className="flex justify-center gap-3 mt-1 text-lg text-white">
-              <div className="p-2">
-                <Google />
-              </div>
-              <div className="p-2">
-                <Facebook />
-              </div>
-            </div>
-          </div>
-
-          <div id="signInDiv"></div>
         </div>
       </div>
     </div>

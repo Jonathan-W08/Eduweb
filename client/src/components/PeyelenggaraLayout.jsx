@@ -23,19 +23,19 @@ const PenyelenggaraLayout = (props) => {
   useEffect(() => {
     if (!props.account.status) {
       navigate("/login");
-    } else if (props.account.status !== "penyelenggara") {
+    } else if (props.account.status === "user") {
       navigate("/");
     }
   });
 
   return (
-    <div>
+    <>
       <NavbarTwo controlSidebarOpen={controlSidebarOpen} />
 
-      <Outlet />
+      <Outlet context={{ sidebarOpen }} />
 
       <Footer />
-    </div>
+    </>
   );
 };
 

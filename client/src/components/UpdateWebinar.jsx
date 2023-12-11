@@ -1,16 +1,51 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputRegister from "./InputRegister";
 import SelectRegister from "./SelectRegister";
 
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const RegisterWebinar = (props) => {
-  // Account Data
-  const account = useSelector((props) => props.account.account);
-
+const UpdateWebinar = () => {
   const navigation = useNavigate();
+  const { id } = useParams();
+
+  // Webinars Data
+  const webinars = useSelector((props) => props.webinars.webinars);
+
+  // Webinar Data
+  const [webinarData, setWebinarData] = useState({
+    title: "",
+    categories: "IT Development",
+    date: "",
+    time: "",
+    penyelenggara: "",
+    cost: "",
+    profile_img: "",
+    webinar_img: "",
+  });
+
+  useEffect(() => {
+    const webinar = webinars.find((webinar) => webinar.id === id);
+    if (webinar) {
+      setWebinarData({
+        title: webinar.title,
+        categories: webinar.categories,
+        date: webinar.date,
+        time: webinar.time,
+        penyelenggara: webinar.penyelenggara,
+        cost: webinar.cost,
+        profile_img: webinar.profile_img,
+        webinar_img: webinar.webinar_img,
+      });
+
+      setPreview(webinar.webinar_img);
+
+      return;
+    }
+
+    navigation("/penyelenggara/dashboard");
+  }, []);
 
   // Image Process
   const [file, setFile] = useState("");
@@ -22,18 +57,6 @@ const RegisterWebinar = (props) => {
     setPreview(URL.createObjectURL(image));
   };
 
-  // Webinar Data
-  const [webinarData, setWebinarData] = useState({
-    title: "",
-    categories: "IT Development",
-    date: "",
-    time: "",
-    penyelenggara: account.name,
-    cost: "",
-    profile_img: account.profile_img,
-    webinar_img: "",
-  });
-
   // Change Webinar Data
   const changeWebinarData = (e, name) => {
     setWebinarData((prev) => {
@@ -41,23 +64,26 @@ const RegisterWebinar = (props) => {
     });
   };
 
-  // Add Webinar to database
-  const addWebinar = async () => {
+  // Update Webinar to database
+  const updateWebinar = async () => {
     const formData = new FormData();
-    formData.append("file", file);
+
+    if (file !== null) {
+      formData.append("file", file);
+    }
 
     for (const property in webinarData) {
       formData.append(property, webinarData[property]);
     }
 
     try {
-      await axios.post("http://localhost:5000/webinars", formData, {
+      await axios.patch(`http://localhost:5000/webinars/${id}`, formData, {
         headers: {
           "Content-type": "multipart/form-data",
         },
       });
 
-      props.getWebinars();
+      getWebinars = { getWebinars };
     } catch (err) {
       console.log(err.message);
     }
@@ -66,13 +92,13 @@ const RegisterWebinar = (props) => {
   // Submit Button
   const submitWebinar = (e) => {
     e.preventDefault();
-    addWebinar();
+    updateWebinar();
     navigation("/penyelenggara");
   };
 
   return (
     <div className="flex-1 bg-whiteBlue w-5/6 min-h-screen p-6">
-      <h1 className="text-3xl font-bold">Webinar Registration</h1>
+      <h1 className="text-3xl font-bold">Update Webinar</h1>
       <div className="mt-12">
         <form onSubmit={submitWebinar}>
           <InputRegister
@@ -144,13 +170,7 @@ const RegisterWebinar = (props) => {
           <SelectRegister
             title={"Category"}
             name={"categories"}
-            options={[
-              "IT Development",
-              "Bisnis",
-              "Marketing",
-              "Bahasa Inggris",
-              "Self Development",
-            ]}
+            options={["IT Development", "Bisnis", "Marketing"]}
             required={true}
             value={webinarData.categories}
             changeWebinarData={changeWebinarData}
@@ -168,4 +188,4 @@ const RegisterWebinar = (props) => {
   );
 };
 
-export default RegisterWebinar;
+export default UpdateWebinar;

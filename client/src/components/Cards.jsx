@@ -1,28 +1,14 @@
-import React, { useEffect, useState } from "react";
 import Card from "./Card";
-import axios from "axios";
+import { useSelector } from "react-redux";
 
-const Cards = () => {
-  const [webinars, setWebinars] = useState([]);
-
-  useEffect(() => {
-    const getWebinars = async () => {
-      try {
-        const response = await axios.get("http://localhost:5000/");
-        const data = await response.data;
-        setWebinars(data);
-      } catch (err) {
-        console.log(err.message);
-      }
-    };
-
-    getWebinars();
-  }, []);
+const Cards = (props) => {
+  // Data webinars
+  const webinars = useSelector((state) => state.webinars.webinars);
 
   return (
     <div className="grid grid-cols-1 gap-3 p-3 mt-6 sm:p-6 sm:mt-0 sm:grid-cols-2 sm:gap-6 md:grid-cols-3 xl:grid-cols-4 xl:px-12">
       {webinars.map((webinar) => {
-        return (
+        return props.filterActive[webinar.categories] ? (
           <Card
             key={webinar.id}
             webinarImg={webinar.webinar_img}
@@ -34,6 +20,8 @@ const Cards = () => {
             penyelenggara={webinar.penyelenggara}
             cost={webinar.cost}
           />
+        ) : (
+          false
         );
       })}
     </div>

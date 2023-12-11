@@ -12,6 +12,8 @@ import { useEffect, useState } from "react";
 import TentangKami from "./components/Tentangkami";
 import Partsipasi from "./components/Partsipasi";
 import Webinar from "./components/Webinar";
+import UpdateWebinar from "./components/UpdateWebinar";
+import Navpartisipasi from "./components/Navpartisipasi";
 
 import { useSelector, useDispatch } from "react-redux";
 import Cookie from "js-cookie";
@@ -19,16 +21,37 @@ import CryptoJS from "crypto-js";
 import axios from "axios";
 
 import { accountActions } from "./store/account-slice";
+import { webinarsActions } from "./store/webinar-slice";
 
 export default function App() {
+  const dispatch = useDispatch();
+
+  // Webinars Data
+  const webinars = useSelector((state) => state.webinars.webinars);
+  const changeWebinars = (data) => {
+    dispatch(webinarsActions.changeWebinars(data));
+  };
+
+  const getWebinars = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/");
+      const data = await response.data;
+      changeWebinars(data);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  // Get Webinars
+  useEffect(() => {
+    getWebinars();
+  }, []);
+
   // Account Data
   const account = useSelector((state) => state.account.account);
-  const dispatch = useDispatch();
   const changeAccount = (data) => {
     dispatch(accountActions.changeAccount(data));
   };
-
-  console.log(account);
 
   // Get account from database
   const getAccount = async () => {
@@ -44,34 +67,45 @@ export default function App() {
     // get cookie status
     const getCookieStatus = Cookie.get("status");
 
-    // descrypt cookie id
-    const cookieDc = CryptoJS.AES.decrypt(getCookieId, "eduweb");
-    const cookieDcData = cookieDc.toString(CryptoJS.enc.Utf8);
+    // If not exist
+    if (getCookieId === undefined) {
+      Cookie.set("id", "");
+    }
 
-    // filter account
-    getAccount().then((data) => {
-      data.forEach((each) => {
-        const email = `"${each.email}"`;
-        if (email === cookieDcData) {
-          // Gather data
-          const data = {
-            name: each.name,
-            email: each.email,
-            profile_img: each.profile_img,
-          };
+    if (getCookieStatus === undefined) {
+      Cookie.set("status", "");
+    }
 
-          // change account
-          changeAccount({
-            ...data,
-            status: getCookieStatus,
-          });
-        }
+    if (getCookieId === "" || getCookieStatus === "") {
+      // descrypt cookie id
+      const cookieDc = CryptoJS.AES.decrypt(getCookieId, "eduweb");
+      const cookieDcData = cookieDc.toString(CryptoJS.enc.Utf8);
+
+      // filter account
+      getAccount().then((data) => {
+        data.forEach((each) => {
+          const email = `"${each.email}"`;
+          if (email === cookieDcData) {
+            // Gather data
+            const data = {
+              name: each.name,
+              email: each.email,
+              profile_img: each.profile_img,
+            };
+
+            // change account
+            changeAccount({
+              ...data,
+              status: getCookieStatus,
+            });
+          }
+        });
       });
-    });
+    }
   }, []);
 
   return (
-    <div className="font-sans">
+    <div className="font-sans relative min-h-screen">
       <BrowserRouter>
         <Routes>
           <Route
@@ -86,6 +120,7 @@ export default function App() {
             <Route path="tentangkami" element={<TentangKami />} />
             <Route path="partsipasi" element={<Partsipasi />} />
             <Route path="webinar" element={<Webinar />} />
+            <Route path="navpartisipasi" element={<Navpartisipasi />} />
           </Route>
 
           <Route
@@ -94,8 +129,15 @@ export default function App() {
           >
             <Route index element={<Homepage />} />
             <Route path="dashboard" element={<PeyelenggaraSidebarLayout />}>
-              <Route index element={<Dashboard />} />
-              <Route path="register-webinar" element={<RegisterWebinar />} />
+              <Route index element={<Dashboard getWebinars={getWebinars} />} />
+              <Route
+                path="register-webinar"
+                element={<RegisterWebinar getWebinars={getWebinars} />}
+              />
+              <Route
+                path="update-webinar/:id"
+                element={<UpdateWebinar getWebinars={getWebinars} />}
+              />
             </Route>
           </Route>
 
