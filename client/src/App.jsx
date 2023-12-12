@@ -24,6 +24,12 @@ import { accountActions } from "./store/account-slice";
 import { webinarsActions } from "./store/webinar-slice";
 
 export default function App() {
+  const [resetAccount, setResetAccount] = useState(false);
+
+  const changeResetAccount = () => {
+    setResetAccount((prev) => !prev);
+  };
+
   const dispatch = useDispatch();
 
   // Webinars Data
@@ -76,7 +82,7 @@ export default function App() {
       Cookie.set("status", "");
     }
 
-    if (getCookieId !== "" && getCookieStatus !== "") {
+    if (getCookieId && getCookieStatus) {
       // descrypt cookie id
       const cookieDc = CryptoJS.AES.decrypt(getCookieId, "eduweb");
       const cookieDcData = cookieDc.toString(CryptoJS.enc.Utf8);
@@ -103,7 +109,7 @@ export default function App() {
         });
       });
     }
-  }, []);
+  }, [resetAccount]);
 
   return (
     <div className="font-sans relative min-h-screen">
@@ -111,7 +117,13 @@ export default function App() {
         <Routes>
           <Route
             path="/login"
-            element={<Login changeAccount={changeAccount} account={account} />}
+            element={
+              <Login
+                changeAccount={changeAccount}
+                account={account}
+                changeResetAccount={changeResetAccount}
+              />
+            }
           />
 
           <Route path="/" element={<UserLayout account={account} />}>

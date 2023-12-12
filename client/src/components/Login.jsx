@@ -56,6 +56,8 @@ const Login = (props) => {
         status: userLogin ? "user" : "penyelenggara",
       });
 
+      props.changeResetAccount();
+
       userLogin ? navigate("/penyelenggara") : navigate("/");
     } catch (err) {
       console.log(err);

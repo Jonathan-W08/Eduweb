@@ -12,7 +12,6 @@ const Dashboard = (props) => {
   // Account Data
   const account = useSelector((state) => state.account.account);
   useEffect(() => {
-    console.log(account);
     props.getWebinars();
   }, []);
 
