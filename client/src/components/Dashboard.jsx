@@ -1,18 +1,21 @@
 import React, { useEffect } from "react";
 import CardDashboard from "./CardDashboard";
 import { FiEdit } from "react-icons/fi";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import ConfirmDelete from "./ConfirmDelete";
+import { changeWebinars, fetchWebinars } from "../store/webinar-slice";
 
 const Dashboard = (props) => {
+  const dispatch = useDispatch();
+
   // Data webinars
   const webinars = useSelector((state) => state.webinars.webinars);
 
   // Account Data
   const account = useSelector((state) => state.account.account);
   useEffect(() => {
-    props.getWebinars();
+    dispatch(fetchWebinars());
   }, []);
 
   return (

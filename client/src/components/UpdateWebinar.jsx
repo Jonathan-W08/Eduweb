@@ -93,8 +93,6 @@ const UpdateWebinar = () => {
           "Content-type": "multipart/form-data",
         },
       });
-
-      getWebinars = { getWebinars };
     } catch (err) {
       console.log(err.message);
     }

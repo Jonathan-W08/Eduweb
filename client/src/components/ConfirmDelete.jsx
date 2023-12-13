@@ -5,9 +5,7 @@ import { Button, Modal } from "flowbite-react";
 import { useState } from "react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { FaTrash } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { webinarsActions } from "../store/webinar-slice";
 
 const ConfirmDelete = (props) => {
   const dispatch = useDispatch();

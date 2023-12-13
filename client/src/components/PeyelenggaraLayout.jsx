@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Dashboard from "./Dashboard";
 import Footer from "./Footer";
 import NavbarTwo from "./NavbarTwo";
-import RegisterWebinar from "./RegisterWebinar";
-import Sidebar from "./Sidebar";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const PenyelenggaraLayout = (props) => {
-  const account = useSelector((props) => props.account);
+const account = () => {
+  const account = useSelector((state) => state.account.account);
 
   const navigate = useNavigate();
 
@@ -21,9 +18,9 @@ const PenyelenggaraLayout = (props) => {
 
   // Check Status Account
   useEffect(() => {
-    if (!props.account.status) {
+    if (!account.status) {
       navigate("/login");
-    } else if (props.account.status === "user") {
+    } else if (account.status === "user") {
       navigate("/");
     }
   });
@@ -39,4 +36,4 @@ const PenyelenggaraLayout = (props) => {
   );
 };
 
-export default PenyelenggaraLayout;
+export default account;

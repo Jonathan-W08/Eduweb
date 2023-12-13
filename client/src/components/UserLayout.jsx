@@ -2,15 +2,18 @@ import Footer from "./Footer";
 import React, { useEffect } from "react";
 import Navbar from "./Navbar";
 import { Outlet, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const UserLayout = (props) => {
+const UserLayout = () => {
+  const account = useSelector((state) => state.account.account);
+
   const navigate = useNavigate();
 
   // Check Status Account
   useEffect(() => {
-    if (!props.account.status) {
+    if (!account.status) {
       navigate("/login");
-    } else if (props.account.status === "penyelenggara") {
+    } else if (account.status === "penyelenggara") {
       navigate("/penyelenggara");
     }
   });
