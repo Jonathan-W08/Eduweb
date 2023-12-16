@@ -4,9 +4,12 @@ import SelectRegister from "./SelectRegister";
 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { changeWebinars, fetchWebinars } from "../store/webinar-slice";
 
 const RegisterWebinar = (props) => {
+  const dispatch = useDispatch();
+
   // Account Data
   const account = useSelector((props) => props.account.account);
 
@@ -58,7 +61,7 @@ const RegisterWebinar = (props) => {
         },
       });
 
-      props.getWebinars();
+      dispatch(fetchWebinars());
     } catch (err) {
       console.log(err.message);
     }

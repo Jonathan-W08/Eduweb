@@ -7,12 +7,12 @@ export const createAccount = async (req, res) => {
       `SELECT * FROM account WHERE email='${req.body.email}'`
     );
 
-    if (rows[0] !== null) {
+    if (rows[0] !== undefined) {
       return;
     }
 
     const sql =
-      "INSERT INTO users (id, name, email, profile_img) VALUES (?, ?, ?, ?)";
+      "INSERT INTO account (id, name, email, profile_img) VALUES (?, ?, ?, ?)";
 
     const uniqueId = generateUniqueId();
     const values = [

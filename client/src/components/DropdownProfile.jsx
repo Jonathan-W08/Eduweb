@@ -2,28 +2,25 @@ import Cookies from "js-cookie";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { accountActions } from "../store/account-slice";
+import { changeAccount } from "../store/account-slice";
 
 const DropdownProfile = (props) => {
   const navigate = useNavigate();
 
   const account = useSelector((props) => props.account.account);
   const dispatch = useDispatch();
-  const changeAccount = () => {
+
+  const logout = () => {
+    Cookies.set("id", "");
+    Cookies.set("status", "");
     dispatch(
-      accountActions.changeAccount({
+      changeAccount({
         name: "",
         email: "",
         profile_img: "",
         status: "",
       })
     );
-  };
-
-  const logout = () => {
-    Cookies.set("id", "");
-    Cookies.set("status", "");
-    changeAccount();
   };
 
   return (

@@ -7,18 +7,21 @@ import CryptoJS from "crypto-js";
 
 import { Checkbox } from "flowbite-react";
 import Cookies from "js-cookie";
+import { useSelector } from "react-redux";
 
 const Login = (props) => {
+  const account = useSelector((state) => state.account.account);
   const navigate = useNavigate();
+
   useEffect(() => {
-    if (!props.account.status) {
+    if (!account.status) {
       navigate("/login");
-    } else if (props.account.status === "user") {
+    } else if (account.status === "user") {
       navigate("/");
-    } else if (props.account.status === "penyelenggara") {
+    } else if (account.status === "penyelenggara") {
       navigate("/penyelenggara");
     }
-  }, [props.account]);
+  }, [account]);
 
   // Status Login
   const [userLogin, setUserLogin] = useState(true);
@@ -55,6 +58,8 @@ const Login = (props) => {
         ...data,
         status: userLogin ? "user" : "penyelenggara",
       });
+
+      props.changeResetAccount();
 
       userLogin ? navigate("/penyelenggara") : navigate("/");
     } catch (err) {
