@@ -10,7 +10,7 @@ import RegisterWebinar from "./components/RegisterWebinar";
 import UserLayout from "./components/UserLayout";
 import { useEffect, useState } from "react";
 import TentangKami from "./components/Tentangkami";
-import Partsipasi from "./components/Partsipasi";
+import DetailWebinar from "./components/DetailWebinar";
 import Webinar from "./components/Webinar";
 import UpdateWebinar from "./components/UpdateWebinar";
 import Navpartisipasi from "./components/Navpartisipasi";
@@ -104,7 +104,7 @@ export default function App() {
             <Route path="profile" element={<Profile />} />
             <Route path="homepage" element={<Homepage />} />
             <Route path="tentangkami" element={<TentangKami />} />
-            <Route path="partsipasi" element={<Partsipasi />} />
+            <Route path="detail/:id" element={<DetailWebinar />} />
             <Route path="webinar" element={<Webinar />} />
             <Route path="navpartisipasi" element={<Navpartisipasi />} />
           </Route>

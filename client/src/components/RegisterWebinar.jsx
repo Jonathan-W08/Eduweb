@@ -28,6 +28,7 @@ const RegisterWebinar = (props) => {
   // Webinar Data
   const [webinarData, setWebinarData] = useState({
     title: "",
+    description: "",
     categories: "IT Development",
     date: "",
     time: "",
@@ -35,6 +36,7 @@ const RegisterWebinar = (props) => {
     cost: "",
     profile_img: account.profile_img,
     webinar_img: "",
+    webinar_link: "",
     id_penyelenggara: account.id,
   });
 
@@ -86,6 +88,7 @@ const RegisterWebinar = (props) => {
             required={true}
             preLabel={false}
             type={"text"}
+            elHTML={"input"}
             value={webinarData.penyelenggara}
             changeWebinarData={changeWebinarData}
           />
@@ -96,7 +99,20 @@ const RegisterWebinar = (props) => {
             required={true}
             preLabel={false}
             type={"text"}
+            elHTML={"input"}
             value={webinarData.title}
+            changeWebinarData={changeWebinarData}
+          />
+
+          <InputRegister
+            title={"Deskripsi"}
+            name={"description"}
+            placeholder={"UI/UX Rules"}
+            required={true}
+            preLabel={false}
+            type={"text"}
+            elHTML={"textarea"}
+            value={webinarData.description}
             changeWebinarData={changeWebinarData}
           />
           <InputRegister
@@ -106,6 +122,7 @@ const RegisterWebinar = (props) => {
             required={true}
             preLabel={"Rp"}
             type={"number"}
+            elHTML={"input"}
             value={webinarData.cost}
             changeWebinarData={changeWebinarData}
           />
@@ -118,6 +135,7 @@ const RegisterWebinar = (props) => {
               required={true}
               preLabel={false}
               type={"date"}
+              elHTML={"input"}
               value={webinarData.date}
               changeWebinarData={changeWebinarData}
             />
@@ -128,6 +146,7 @@ const RegisterWebinar = (props) => {
               required={true}
               preLabel={false}
               type={"time"}
+              elHTML={"input"}
               value={webinarData.time}
               changeWebinarData={changeWebinarData}
             />
@@ -140,6 +159,7 @@ const RegisterWebinar = (props) => {
               required={true}
               preLabel={false}
               type={"file"}
+              elHTML={"input"}
               changeLoadImage={loadImage}
               preview={preview}
             />
@@ -157,6 +177,18 @@ const RegisterWebinar = (props) => {
             ]}
             required={true}
             value={webinarData.categories}
+            changeWebinarData={changeWebinarData}
+          />
+
+          <InputRegister
+            title={"Link Webinar"}
+            name={"webinar_link"}
+            placeholder={"https://www.zoom.com"}
+            required={true}
+            preLabel={false}
+            type={"text"}
+            elHTML={"input"}
+            value={webinarData.webinar_link}
             changeWebinarData={changeWebinarData}
           />
 

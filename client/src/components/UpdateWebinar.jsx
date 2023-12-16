@@ -4,11 +4,13 @@ import SelectRegister from "./SelectRegister";
 
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { changeWebinars, fetchWebinars } from "../store/webinar-slice";
 
 const UpdateWebinar = () => {
   const navigation = useNavigate();
   const { id } = useParams();
+  const dispatch = useDispatch();
 
   // Account Data
   const account = useSelector((state) => state.account.account);
@@ -19,6 +21,7 @@ const UpdateWebinar = () => {
   // Webinar Data
   const [webinarData, setWebinarData] = useState({
     title: "",
+    description: "",
     categories: "IT Development",
     date: "",
     time: "",
@@ -26,20 +29,28 @@ const UpdateWebinar = () => {
     cost: "",
     profile_img: "",
     webinar_img: "",
+    webinar_link: "",
     id_penyelenggara: "",
   });
 
   useEffect(() => {
+    console.log(webinars);
+
     const webinar = webinars.find((webinar) => webinar.id === id);
+
+    console.log(webinar);
 
     if (webinar.id_penyelenggara !== account.id) {
       navigation("/penyelenggara/dashboard");
       return;
     }
 
+    console.log(webinar);
+
     if (webinar) {
       setWebinarData({
         title: webinar.title,
+        description: webinar.description,
         categories: webinar.categories,
         date: webinar.date,
         time: webinar.time,
@@ -47,6 +58,7 @@ const UpdateWebinar = () => {
         cost: webinar.cost,
         profile_img: webinar.profile_img,
         webinar_img: webinar.webinar_img,
+        webinar_link: webinar.webinar_link,
         id_penyelenggara: webinar.id_penyelenggara,
       });
 
@@ -56,7 +68,8 @@ const UpdateWebinar = () => {
     }
 
     navigation("/penyelenggara/dashboard");
-  }, []);
+    return false;
+  }, [webinarData]);
 
   // Image Process
   const [file, setFile] = useState("");
@@ -93,6 +106,8 @@ const UpdateWebinar = () => {
           "Content-type": "multipart/form-data",
         },
       });
+
+      dispatch(fetchWebinars("seleksi"));
     } catch (err) {
       console.log(err.message);
     }
@@ -119,6 +134,7 @@ const UpdateWebinar = () => {
             type={"text"}
             value={webinarData.penyelenggara}
             changeWebinarData={changeWebinarData}
+            elHTML={"input"}
           />
           <InputRegister
             title={"Judul Event"}
@@ -128,6 +144,18 @@ const UpdateWebinar = () => {
             preLabel={false}
             type={"text"}
             value={webinarData.title}
+            changeWebinarData={changeWebinarData}
+            elHTML={"input"}
+          />
+          <InputRegister
+            title={"Deskripsi"}
+            name={"description"}
+            placeholder={"UI/UX Rules"}
+            required={true}
+            preLabel={false}
+            type={"text"}
+            elHTML={"textarea"}
+            value={webinarData.description}
             changeWebinarData={changeWebinarData}
           />
           <InputRegister
@@ -139,6 +167,7 @@ const UpdateWebinar = () => {
             type={"number"}
             value={webinarData.cost}
             changeWebinarData={changeWebinarData}
+            elHTML={"input"}
           />
 
           <div className="grid grid-cols-2 gap-3">
@@ -151,6 +180,7 @@ const UpdateWebinar = () => {
               type={"date"}
               value={webinarData.date}
               changeWebinarData={changeWebinarData}
+              elHTML={"input"}
             />
             <InputRegister
               title={"Waktu"}
@@ -161,6 +191,7 @@ const UpdateWebinar = () => {
               type={"time"}
               value={webinarData.time}
               changeWebinarData={changeWebinarData}
+              elHTML={"input"}
             />
           </div>
 
@@ -173,15 +204,34 @@ const UpdateWebinar = () => {
               type={"file"}
               changeLoadImage={loadImage}
               preview={preview}
+              elHTML={"input"}
             />
           </div>
 
           <SelectRegister
             title={"Kategori"}
             name={"categories"}
-            options={["IT Development", "Bisnis", "Marketing"]}
+            options={[
+              "IT Development",
+              "Bisnis",
+              "Marketing",
+              "Bahasa Inggris",
+              "Self Development",
+            ]}
             required={true}
             value={webinarData.categories}
+            changeWebinarData={changeWebinarData}
+          />
+
+          <InputRegister
+            title={"Link Webinar"}
+            name={"webinar_link"}
+            placeholder={"https://www.zoom.com"}
+            required={true}
+            preLabel={false}
+            type={"text"}
+            elHTML={"input"}
+            value={webinarData.webinar_link}
             changeWebinarData={changeWebinarData}
           />
 

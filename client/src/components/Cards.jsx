@@ -11,6 +11,7 @@ const Cards = (props) => {
         return props.filterActive[webinar.categories] ? (
           <Card
             key={webinar.id}
+            id={webinar.id}
             webinarImg={webinar.webinar_img}
             categories={webinar.categories}
             title={webinar.title}

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Card = (props) => {
   return (
-    <Link to={"/partsipasi"}>
+    <Link to={`/detail/${props.id}`}>
       <div
         className={` flex-col bg-white w-full p-3 opacity-80 shadow-md rounded-md break-all cursor-pointer transition-all hover:border-2 hover:border-cyan hover:scale-105 hover:rotate-3 hover:shadow-xl hover:opacity-100`}
       >

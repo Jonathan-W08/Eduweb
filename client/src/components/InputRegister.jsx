@@ -26,35 +26,38 @@ const InputRegister = (props) => {
             <span className="text-gray-500 sm:text-sm">{props.preLabel}</span>
           </div>
         )}
-        <input
-          type={props.type}
-          name={props.name}
-          id={props.name}
-          className={`block w-full rounded-md border-0 py-1.5 ${
-            props.preLabel ? "px-9" : "px-3"
-          } text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-mid-blue sm:text-sm sm:leading-6`}
-          placeholder={props.placeholder}
-          value={props.value}
-          onChange={(e) =>
-            props.type === "file"
-              ? props.changeLoadImage(e)
-              : props.changeWebinarData(e, props.name)
-          }
-        />
-        {/* <div className="absolute inset-y-0 right-0 flex items-center">
-          <label htmlFor="currency" className="sr-only">
-            Currency
-          </label>
-          <select
-            id="currency"
-            name="currency"
-            className="h-full rounded-md border-0 bg-transparent py-0 pl-2 pr-7 text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
-          >
-            <option>USD</option>
-            <option>CAD</option>
-            <option>EUR</option>
-          </select>
-        </div> */}
+        {props.elHTML === "input" ? (
+          <input
+            type={props.type}
+            name={props.name}
+            id={props.name}
+            className={`block w-full rounded-md border-0 py-1.5 ${
+              props.preLabel ? "px-9" : "px-3"
+            } text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-mid-blue sm:text-sm sm:leading-6`}
+            placeholder={props.placeholder}
+            value={props.value}
+            onChange={(e) =>
+              props.type === "file"
+                ? props.changeLoadImage(e)
+                : props.changeWebinarData(e, props.name)
+            }
+          />
+        ) : (
+          <textarea
+            name={props.name}
+            id={props.name}
+            className={`block w-full rounded-md border-0 py-1.5 ${
+              props.preLabel ? "px-9" : "px-3"
+            } text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-mid-blue sm:text-sm sm:leading-6`}
+            placeholder={props.placeholder}
+            value={props.value}
+            onChange={(e) =>
+              props.type === "file"
+                ? props.changeLoadImage(e)
+                : props.changeWebinarData(e, props.name)
+            }
+          ></textarea>
+        )}
       </div>
     </div>
   );

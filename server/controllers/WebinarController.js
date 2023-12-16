@@ -44,12 +44,13 @@ export const createWebinar = async (req, res) => {
     try {
       const uniqueId = generateUniqueId();
 
-      const sql = `INSERT INTO webinars (id, title, categories, date, time, penyelenggara, cost, profile_img, webinar_img, id_penyelenggara)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+      const sql = `INSERT INTO webinars (id, title, description, categories, date, time, penyelenggara, cost, profile_img, webinar_img, webinar_link, id_penyelenggara)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
       const values = [
         uniqueId,
         req.body.title,
+        req.body.description,
         req.body.categories,
         req.body.date,
         req.body.time,
@@ -57,6 +58,7 @@ export const createWebinar = async (req, res) => {
         req.body.cost,
         req.body.profile_img,
         url,
+        req.body.webinar_link,
         req.body.id_penyelenggara,
       ];
 
@@ -74,10 +76,11 @@ export const updateWebinar = async (req, res) => {
 
   if (req.files === null) {
     try {
-      const sql = `UPDATE webinars set title=?, categories=?, date=?, time=?, penyelenggara=?, cost=?, profile_img=?, webinar_img=?, id_penyelenggara=? WHERE id=?`;
+      const sql = `UPDATE webinars set title=?, description=?, categories=?, date=?, time=?, penyelenggara=?, cost=?, profile_img=?, webinar_img=?, webinar_link=?, id_penyelenggara=? WHERE id=?`;
 
       const values = [
         req.body.title,
+        req.body.description,
         req.body.categories,
         req.body.date,
         req.body.time,
@@ -85,6 +88,7 @@ export const updateWebinar = async (req, res) => {
         req.body.cost,
         req.body.profile_img,
         req.body.webinar_img,
+        req.body.webinar_link,
         req.body.id_penyelenggara,
         id,
       ];
@@ -114,10 +118,11 @@ export const updateWebinar = async (req, res) => {
   file.mv(`./public/images/${fileName}`, async (err) => {
     if (err) return res.status(500).json({ msg: err.message });
     try {
-      const sql = `UPDATE webinars set title=?, categories=?, date=?, time=?, penyelenggara=?, cost=?, profile_img=?, webinar_img=?, id_penyelenggara=? WHERE id=?`;
+      const sql = `UPDATE webinars set title=?, description=?, categories=?, date=?, time=?, penyelenggara=?, cost=?, profile_img=?, webinar_img=?, webinar_link=?, id_penyelenggara=? WHERE id=?`;
 
       const values = [
         req.body.title,
+        req.body.description,
         req.body.categories,
         req.body.date,
         req.body.time,
@@ -125,6 +130,7 @@ export const updateWebinar = async (req, res) => {
         req.body.cost,
         req.body.profile_img,
         url,
+        req.body.webinar_link,
         req.body.id_penyelenggara,
         id,
       ];
