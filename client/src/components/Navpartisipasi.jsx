@@ -36,9 +36,11 @@ const Navpartisipasi = () => {
                 <th scope="col" className="px-6 py-3">
                   Hapus
                 </th>
+
                 <th scope="col" className="px-6 py-3">
-                  Edit
+                  Link Webinar
                 </th>
+                
               </tr>
             </thead>
             <tbody>
@@ -55,12 +57,33 @@ const Navpartisipasi = () => {
                     <td className="px-6 py-4">
                       <Batalwebinar/>
                     </td>
+
                     <td className="px-6 py-4">
-                     
-                    <FiEdit className="w-10" />
-                      
+                    https://us05web.zoom.us/j/83686479020?pwd=8ad29hcbkjeGqMemVlqzODeZvbhRPR.1
                     </td>
+                    
                   </tr>
+                  <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+              
+                    
+                    <td className="px-6 py-4">
+                    React.JS: Getting Started, Concepts & Implementation
+                    </td>
+                    <td className="px-6 py-4">
+                    Sabtu, 18 Nov 2023
+                    </td>
+
+                    <td className="px-6 py-4">
+                      <Batalwebinar/>
+                    </td>
+
+                    <td className="px-6 py-4">
+                    https://us05web.zoom.us/j/83686479020?pwd=8ad29hcbkjeGqMemVlqzODeZvbhRPR.1
+                    </td>
+                    
+                  </tr>
+
+
             </tbody>
           </table>
         </div>

@@ -29,6 +29,11 @@ const Partsipasi = () => {
             <br />
             #GrowTogetherWithIL
       </p>
+      <div>
+
+      <h1 className="text-xl"> Link Webinar: </h1>
+      <p>https://us05web.zoom.us/j/83686479020?pwd=8ad29hcbkjeGqMemVlqzODeZvbhRPR.1</p>
+      </div>
     </Card>
 
         

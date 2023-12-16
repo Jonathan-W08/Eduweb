@@ -129,7 +129,7 @@ const Webinar = () => {
           </div>
 
           <Button className="bg-midBlue" as={Link} to={"/homepage"}>
-            Daftar Webinar
+            Save Webinar
           </Button>
           </Card>
         </div>
