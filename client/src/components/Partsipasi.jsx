@@ -34,6 +34,11 @@ const Partsipasi = () => {
       <h1 className="text-xl"> Link Webinar: </h1>
       <p>https://us05web.zoom.us/j/83686479020?pwd=8ad29hcbkjeGqMemVlqzODeZvbhRPR.1</p>
       </div>
+      <div className="flex justify-center">
+      <Button className="bg-midBlue w-64" as={Link} to={"/homepage"}>
+            Menyimpanan Webinar
+          </Button>
+          </div>
     </Card>
 
         
@@ -42,7 +47,7 @@ const Partsipasi = () => {
       <div className="flex flex-col justify-between">
 
         <div className="p-10 mx-10">
-        <Card href="#" className="max-w-sm">
+        <Card href="#" className="w-100">
         <h5 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
               Fundamental UI/UX design: Wireframing dan Prototyping
             </h5>
@@ -76,29 +81,7 @@ const Partsipasi = () => {
         </div>
 
        
-        <div
-          className="flex flex-col justify-center p-10 mx-10">
-          <Card href="#" className="max-w-sm">
-          <h5
-            className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center mt-4 gap-3"
-            style={{ borderBottom: "5px solid #000" }}
-          >
-            <IoTicketSharp  style={{ width: "130px", height: "100px" }} />
-            Fundamental UI/UX design: Wireframing dan Prototyping
-          </h5>
-          <div className="flex justify-between">
-            <h5 className="flex  text-2xl font-tracking-tight text-gray-900 dark:text-white ">
-              Harga
-            </h5>
-            <h5 className="flex text-end text-2xl font-tracking-tight text-gray-900 dark:text-white ">
-              Gratis
-            </h5>
-          </div>
-          <Button className="bg-midBlue" as={Link} to={"/webinar"}>
-            Lanjut Ke Detail Pendaftaran
-          </Button>
-          </Card>
-        </div>
+      
 
       </div>
 
