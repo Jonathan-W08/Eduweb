@@ -6,12 +6,21 @@ import { MdDateRange } from "react-icons/md";
 import { MdOutlineAccessTimeFilled } from "react-icons/md";
 import { RiComputerFill } from "react-icons/ri";
 import { IoTicketSharp } from "react-icons/io5";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, useFetcher, useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { fetchAccount, changeAccount } from "../store/account-slice";
 
 const DetailWebinar = () => {
   const { id } = useParams();
   const navigation = useNavigate();
+  const dispatch = useDispatch();
+
+  // Account
+  const account = useSelector((props) => props.account.account);
+
+  // Save or unsave
+  const [save, setSave] = useState(false);
 
   // Webinars Data
   const webinars = useSelector((props) => props.webinars.webinars);
@@ -21,7 +30,6 @@ const DetailWebinar = () => {
 
   useEffect(() => {
     const webinar = webinars.find((webinar) => webinar.id === id);
-    console.log(webinar);
 
     if (webinar) {
       setWebinarData({
@@ -40,8 +48,37 @@ const DetailWebinar = () => {
 
       return;
     }
-    navigation("/not-found");
-  }, []);
+  }, [webinars]);
+
+  // Save or unsave webinar
+  const saveWebinar = async () => {
+    const resp = await axios.patch("http://localhost:5000/save-webinar", {
+      ...account,
+      id_webinar: id,
+    });
+
+    const { id_webinar, saved } = resp.data;
+
+    setSave(saved);
+
+    fetchAccount().then((data) => {
+      data.forEach((e) => {
+        if (e.id === account.id) {
+          const webinars = JSON.parse(e.webinars_save);
+          dispatch(changeAccount({ ...e, webinars_save: webinars }));
+        }
+      });
+    });
+  };
+
+  // Check save or unsave webinar
+  useEffect(() => {
+    if (account.webinars_save.find((e) => e === id)) {
+      setSave(true);
+    } else {
+      setSave(false);
+    }
+  }, [account]);
 
   return webinarData ? (
     <div className="flex flex-row p-8 gap-10">
@@ -60,8 +97,11 @@ const DetailWebinar = () => {
             </Link>
           </div>
           <div className="flex justify-center">
-            <Button className="bg-midBlue w-64" as={Link} to={"/homepage"}>
-              Menyimpanan Webinar
+            <Button
+              className={`${save ? "bg-red-700" : "bg-midBlue"} w-64`}
+              onClick={saveWebinar}
+            >
+              {save ? "Tersimpan" : "Simpan Webinar"}
             </Button>
           </div>
         </Card>

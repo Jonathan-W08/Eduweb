@@ -22,11 +22,14 @@ import axios from "axios";
 
 import { changeAccount, fetchAccount } from "./store/account-slice";
 import { changeWebinars, fetchWebinars } from "./store/webinar-slice";
+import account from "./components/PeyelenggaraLayout";
 
 export default function App() {
   const dispatch = useDispatch();
 
-  // Reser Account
+  const account = useSelector((props) => props.account.account);
+
+  // Reset Account
   const [resetAccount, setResetAccount] = useState(false);
 
   const changeResetAccount = () => {
@@ -70,6 +73,7 @@ export default function App() {
               name: each.name,
               email: each.email,
               profile_img: each.profile_img,
+              webinars_save: JSON.parse(each.webinars_save),
             };
 
             // change account
@@ -106,7 +110,7 @@ export default function App() {
             <Route path="tentangkami" element={<TentangKami />} />
             <Route path="detail/:id" element={<DetailWebinar />} />
             <Route path="webinar" element={<Webinar />} />
-            <Route path="navpartisipasi" element={<Navpartisipasi />} />
+            <Route path="partisipasi" element={<Navpartisipasi />} />
           </Route>
 
           <Route path="/penyelenggara" element={<PenyelenggaraLayout />}>

@@ -52,10 +52,12 @@ const Login = (props) => {
       Cookies.set("status", userLogin ? "user" : "penyelenggara");
 
       // Create new account
-      axios.post("http://localhost:5000/login", data);
+      const resp = axios.post("http://localhost:5000/login", data);
+      const data2 = await resp;
 
       props.changeAccount({
         ...data,
+        webinars_save: data2.data.webinars_save,
         status: userLogin ? "user" : "penyelenggara",
       });
 

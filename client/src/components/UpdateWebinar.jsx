@@ -34,18 +34,20 @@ const UpdateWebinar = () => {
   });
 
   useEffect(() => {
-    console.log(webinars);
+    if (!webinars.length) {
+      return;
+    }
+
+    if (!account.id) {
+      return;
+    }
 
     const webinar = webinars.find((webinar) => webinar.id === id);
-
-    console.log(webinar);
 
     if (webinar.id_penyelenggara !== account.id) {
       navigation("/penyelenggara/dashboard");
       return;
     }
-
-    console.log(webinar);
 
     if (webinar) {
       setWebinarData({
@@ -69,7 +71,7 @@ const UpdateWebinar = () => {
 
     navigation("/penyelenggara/dashboard");
     return false;
-  }, [webinarData]);
+  }, [webinars, account]);
 
   // Image Process
   const [file, setFile] = useState("");

@@ -3,8 +3,9 @@ import Footer from "./Footer";
 import NavbarTwo from "./NavbarTwo";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Cookie from "js-cookie";
 
-const account = () => {
+const penyelenggaraLayout = () => {
   const account = useSelector((state) => state.account.account);
 
   const navigate = useNavigate();
@@ -18,9 +19,9 @@ const account = () => {
 
   // Check Status Account
   useEffect(() => {
-    if (!account.status) {
+    if (!Cookie.get("status")) {
       navigate("/login");
-    } else if (account.status === "user") {
+    } else if (Cookie.get("status") === "user") {
       navigate("/");
     }
   });
@@ -36,4 +37,4 @@ const account = () => {
   );
 };
 
-export default account;
+export default penyelenggaraLayout;

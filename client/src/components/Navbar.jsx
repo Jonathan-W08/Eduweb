@@ -83,8 +83,7 @@ const Navbar = () => {
         <DropdownProfile
           linkList={[
             { name: "Profil", route: "/profile" },
-            { name: "Partisipasi", route: "/navpartisipasi" },
-         
+            { name: "Partisipasi", route: "/partisipasi" },
           ]}
         />
       )}

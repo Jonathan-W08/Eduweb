@@ -19,6 +19,7 @@ const accountSlice = createSlice({
       name: "",
       email: "",
       profile_img: "",
+      webinars_save: [],
       status: "",
     },
   },

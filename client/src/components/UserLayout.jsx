@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import Navbar from "./Navbar";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Cookie from "js-cookie";
 
 const UserLayout = () => {
   const account = useSelector((state) => state.account.account);
@@ -11,9 +12,9 @@ const UserLayout = () => {
 
   // Check Status Account
   useEffect(() => {
-    if (!account.status) {
+    if (!Cookie.get("status")) {
       navigate("/login");
-    } else if (account.status === "penyelenggara") {
+    } else if (Cookie.get("status") === "penyelenggara") {
       navigate("/penyelenggara");
     }
   });

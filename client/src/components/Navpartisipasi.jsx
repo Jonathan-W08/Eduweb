@@ -5,6 +5,7 @@ import SidebarProfile from "./SidebarProfile";
 import { FiEdit } from "react-icons/fi";
 
 import Batalwebinar from "./Batalwebinar";
+import { Link } from "react-router-dom";
 
 const Navpartisipasi = () => {
   const account = useSelector((props) => props.account.account);
@@ -38,34 +39,29 @@ const Navpartisipasi = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                <td className="px-6 py-4">
-                  Fundamental UI/UX design: Wifeframing dan Prototyping
-                </td>
-                <td className="px-6 py-4">Jumat, 17 Nov 2023</td>
+              {webinars.map((webinar) => {
+                if (account.webinars_save.includes(webinar.id)) {
+                  return (
+                    <tr
+                      key={webinar.id}
+                      className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
+                    >
+                      <td className="px-6 py-4">{webinar.title}</td>
+                      <td className="px-6 py-4">{webinar.date}</td>
 
-                <td className="px-6 py-4">
-                  <Batalwebinar />
-                </td>
+                      <td className="px-6 py-4">
+                        <Batalwebinar id={webinar.id} />
+                      </td>
 
-                <td className="px-6 py-4">
-                  https://us05web.zoom.us/j/83686479020?pwd=8ad29hcbkjeGqMemVlqzODeZvbhRPR.1
-                </td>
-              </tr>
-              <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                <td className="px-6 py-4">
-                  React.JS: Getting Started, Concepts & Implementation
-                </td>
-                <td className="px-6 py-4">Sabtu, 18 Nov 2023</td>
-
-                <td className="px-6 py-4">
-                  <Batalwebinar />
-                </td>
-
-                <td className="px-6 py-4">
-                  https://us05web.zoom.us/j/83686479020?pwd=8ad29hcbkjeGqMemVlqzODeZvbhRPR.1
-                </td>
-              </tr>
+                      <td className="px-6 py-4">
+                        <Link to={webinar.webinar_link}>
+                          {webinar.webinar_link}
+                        </Link>
+                      </td>
+                    </tr>
+                  );
+                }
+              })}
             </tbody>
           </table>
         </div>

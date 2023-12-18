@@ -28,7 +28,9 @@ const SidebarProfile = (props) => {
           <div className="md:flex md:justify-between md:items-center md:border-black md:border-b-2 md:hover:text-midBlue md:hover:border-midBlue">
             <div className="md:flex md:gap-1 md:items-center md:p-3 md:pl-0">
               <People className="text-xl" />
-              <Link className="flex-1">Profile</Link>
+              <Link className="flex-1" to={"/profile"}>
+                Profile
+              </Link>
             </div>
             <ChevronRight className="text-xl" />
           </div>
@@ -36,13 +38,14 @@ const SidebarProfile = (props) => {
           <div className="md:flex md:justify-between md:items-center md:border-black md:border-b-2 md:hover:text-midBlue md:hover:border-midBlue">
             <div className="md:flex md:gap-1 md:items-center md:p-3 md:pl-0">
               <JournalText className="text-xl" />
-              <Link className="flex-1">Partisipasi</Link>
+              <Link className="flex-1" to={"/partisipasi"}>
+                Partisipasi
+              </Link>
             </div>
             <ChevronRight className="text-xl" />
           </div>
         </div>
       </div>
-      
     </div>
   );
 };
