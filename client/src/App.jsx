@@ -106,7 +106,6 @@ export default function App() {
           <Route path="/" element={<UserLayout />}>
             <Route index element={<Homepage />} />
             <Route path="profile" element={<Profile />} />
-            <Route path="homepage" element={<Homepage />} />
             <Route path="tentangkami" element={<TentangKami />} />
             <Route path="detail/:id" element={<DetailWebinar />} />
             <Route path="webinar" element={<Webinar />} />

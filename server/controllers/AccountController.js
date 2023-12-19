@@ -14,6 +14,8 @@ export const createAccount = async (req, res) => {
       return;
     }
 
+    console.log("HALLO");
+
     const sql =
       "INSERT INTO account (id, name, email, profile_img, webinars_save) VALUES (?, ?, ?, ?, ?)";
 
