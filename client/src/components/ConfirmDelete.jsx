@@ -6,6 +6,7 @@ import { useState } from "react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { FaTrash } from "react-icons/fa";
 import { useDispatch } from "react-redux";
+import { fetchWebinars } from "../store/webinar-slice";
 
 const ConfirmDelete = (props) => {
   const dispatch = useDispatch();
@@ -16,7 +17,8 @@ const ConfirmDelete = (props) => {
   const deleteWebinar = async () => {
     try {
       await axios.delete(`http://localhost:5000/webinars/${props.id}`);
-      props.getWebinars();
+      dispatch(fetchWebinars());
+
       setOpenModal(false);
     } catch (err) {
       console.log(err.message);
